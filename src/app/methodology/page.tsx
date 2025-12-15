@@ -30,6 +30,16 @@ export default function MethodologyPage() {
             </p>
           </div>
 
+          <div className="mb-8 rounded-lg bg-blue-50 p-5 border-l-4 border-blue-500">
+            <h3 className="text-sm font-bold text-blue-900 mb-2">ℹ️ Dashboard Context</h3>
+            <p className="text-sm text-blue-800 leading-relaxed">
+              This page provides structured presentation of the research methodology.
+              <strong> Core methodology from the research paper:</strong> Survey-based data collection (n=73),
+              descriptive and comparative analysis, GWA distribution across enrollment status,
+              and study habits correlation. Additional organizational structure supports dashboard presentation.
+            </p>
+          </div>
+
           {/* Research Design */}
           <section className="mb-8">
             <h2 className="mb-4 text-2xl font-semibold text-gray-800">
@@ -45,19 +55,7 @@ export default function MethodologyPage() {
               </p>
 
               <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
-                Research Framework
-              </h3>
-              <p className="mb-4 text-gray-700 leading-relaxed">
-                The study is grounded in <strong>Achievement Goal Theory</strong> (Dweck,
-                1986) and <strong>Academic Integration Theory</strong> (Tinto, 1975), which
-                suggest that academic outcomes are influenced by institutional
-                factors and individual characteristics. Enrollment status serves
-                as a proxy for curriculum continuity and academic progression
-                patterns.
-              </p>
-
-              <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
-                Variables
+                Key Variables
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>
@@ -69,8 +67,7 @@ export default function MethodologyPage() {
                   (Continuous: GWA on 1.0-5.0 scale)
                 </li>
                 <li>
-                  <strong>Moderating Variable:</strong> Study Hours per Week
-                  (Continuous: 0-40+ hours)
+                  <strong>Contributing Factors:</strong> Study habits, attendance, time management
                 </li>
               </ul>
             </div>
@@ -83,42 +80,20 @@ export default function MethodologyPage() {
             </h2>
             <div className="prose prose-gray max-w-none">
               <h3 className="mb-2 text-lg font-semibold text-gray-800">
-                Population
+                Sampling
               </h3>
               <p className="mb-4 text-gray-700 leading-relaxed">
-                The target population consisted of all undergraduate Computer
-                Science students enrolled at Mabini College during the 2023-2024
-                academic year (N ≈ 250).
+                Survey-based data collection from Computer Science students at Mabini College.
+                Sample size: 73 students (55 Regular, 18 Irregular).
               </p>
-
-              <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
-                Sampling Method
-              </h3>
-              <p className="mb-4 text-gray-700 leading-relaxed">
-                <strong>Stratified random sampling</strong> was employed to ensure
-                proportional representation of both Regular and Irregular
-                students. The sample size (n = 73) was determined using the
-                Slovin&apos;s formula with a 10% margin of error, which is acceptable
-                for exploratory studies in educational research.
-              </p>
-
-              <div className="my-4 rounded-lg bg-gray-50 p-4 border border-gray-300">
-                <p className="font-mono text-sm text-gray-700">
-                  n = N / (1 + N × e²)
-                  <br />
-                  n = 250 / (1 + 250 × 0.10²) = 71.43 ≈ 73
-                </p>
-              </div>
 
               <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
                 Sample Characteristics
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>Total respondents: 73 students</li>
-                <li>Regular students: 55 (75.3%)</li>
-                <li>Irregular students: 18 (24.7%)</li>
-                <li>Year levels: 1st to 4th year (all levels included)</li>
-                <li>Response rate: 94.8% (73 of 77 approached)</li>
+                <li>Regular students: 55 (75.34%)</li>
+                <li>Irregular students: 18 (24.66%)</li>
               </ul>
             </div>
           </section>
@@ -130,56 +105,29 @@ export default function MethodologyPage() {
             </h2>
             <div className="prose prose-gray max-w-none">
               <h3 className="mb-2 text-lg font-semibold text-gray-800">
-                Instruments
+                Survey Instrument
               </h3>
               <p className="mb-4 text-gray-700 leading-relaxed">
-                A <strong>researcher-developed questionnaire</strong> was used to collect
-                data on enrollment status, academic performance (GWA), and study
-                habits. The instrument consisted of three parts:
+                Structured questionnaire administered via <strong>Google Forms</strong>,
+                consisting of 10-15 close-ended items covering:
               </p>
-              <ol className="list-decimal pl-6 space-y-2 text-gray-700 mb-4">
-                <li>
-                  <strong>Demographic Information:</strong> Enrollment status,
-                  year level, student ID (anonymized)
-                </li>
-                <li>
-                  <strong>Academic Performance:</strong> Self-reported GWA
-                  verified against official registrar records
-                </li>
-                <li>
-                  <strong>Study Habits:</strong> Weekly study hours categorized
-                  into ranges (0-5, 6-10, 11-15, 16-20, 21+ hours)
-                </li>
-              </ol>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+                <li>GWA (General Weighted Average)</li>
+                <li>Study habits and daily study hours</li>
+                <li>Attendance patterns</li>
+                <li>Enrollment classification (Regular/Irregular)</li>
+              </ul>
 
               <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
-                Procedure
+                Data Collection Procedure
               </h3>
-              <ol className="list-decimal pl-6 space-y-3 text-gray-700">
-                <li>
-                  <strong>Ethical Clearance:</strong> Approval obtained from
-                  Mabini College Institutional Review Board (IRB Protocol
-                  #2023-CS-089)
-                </li>
-                <li>
-                  <strong>Informed Consent:</strong> All participants provided
-                  written informed consent after being briefed on study purpose
-                  and data usage
-                </li>
-                <li>
-                  <strong>Data Collection:</strong> Questionnaires administered
-                  during regular class hours over a two-week period (September
-                  2023)
-                </li>
-                <li>
-                  <strong>Data Verification:</strong> GWA data cross-referenced
-                  with registrar records to ensure accuracy
-                </li>
-                <li>
-                  <strong>Data Anonymization:</strong> All identifying
-                  information removed and replaced with unique numeric codes
-                </li>
-              </ol>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                <li>Voluntary and anonymous participation</li>
+                <li>Structured questionnaire via Google Forms (10-15 close-ended items)</li>
+                <li>Covered GPA, study habits, attendance, and enrollment classification</li>
+                <li>Responses validated and securely encoded for analysis</li>
+                <li>No personal or sensitive information collected</li>
+              </ul>
             </div>
           </section>
 
@@ -190,9 +138,9 @@ export default function MethodologyPage() {
             </h2>
             <div className="prose prose-gray max-w-none">
               <p className="mb-4 text-gray-700 leading-relaxed">
-                Data analysis was conducted using descriptive and inferential
-                statistics. All analyses were performed using statistical
-                software with significance level set at α = 0.05.
+                Data analysis utilized descriptive and comparative techniques to interpret
+                survey-based data. Numerical responses were aggregated using mean, percentage,
+                and categorical grouping as stated in the research paper.
               </p>
 
               <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
@@ -214,24 +162,20 @@ export default function MethodologyPage() {
               </ul>
 
               <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
-                Inferential Statistics
+                Comparative Analysis
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>
-                  <strong>Independent Samples t-test:</strong> Used to compare
-                  mean GWA between Regular and Irregular students
+                  <strong>Descriptive Comparison:</strong> Mean, median, and distribution
+                  analysis of GWA between Regular and Irregular students
                 </li>
                 <li>
-                  <strong>Pearson Correlation Coefficient:</strong> Calculated
-                  to determine relationship between study hours and GWA (r = -0.78)
+                  <strong>Correlation Analysis:</strong> Examined relationship between
+                  study hours and GWA (r = -0.68, strong negative correlation)
                 </li>
                 <li>
-                  <strong>Chi-Square Test:</strong> Applied to assess
-                  association between enrollment status and GWA categories
-                </li>
-                <li>
-                  <strong>Effect Size:</strong> Cohen&apos;s d computed to measure
-                  magnitude of performance differences
+                  <strong>Percentage Analysis:</strong> Distribution across GWA
+                  categories and study habit patterns
                 </li>
               </ul>
 

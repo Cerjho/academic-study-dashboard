@@ -7,7 +7,9 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8)](https://tailwindcss.com/)
 [![Recharts](https://img.shields.io/badge/Recharts-2.15-8884d8)](https://recharts.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+## ⚠️ Important Note
 
+**This dashboard provides interactive visualization and extended academic framework for research findings. Core data and findings are from the primary research paper. Additional references, theoretical frameworks, and methodology details represent supplementary context for dashboard presentation.**
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -26,48 +28,44 @@
 
 ## 🎯 Overview
 
-This project presents a comprehensive academic research dashboard analyzing enrollment status (Regular vs. Irregular) and its impact on academic achievement. Built with Next.js and TypeScript, the dashboard provides interactive data visualizations, statistical analysis, and research insights based on a study of 73 Computer Science students at Mabini College during the 2023-2024 academic year.
+This project presents a comprehensive academic research dashboard analyzing enrollment status (Regular vs. Irregular) and its impact on academic achievement. Built with Next.js and TypeScript, the dashboard provides interactive data visualizations, statistical analysis, and research insights based on a study of 73 Computer Science students at Mabini College during the 2024-2025 academic year.
 
-**IRB Approval:** Protocol #2023-CS-089 (Approved: August 15, 2023)
+**Note:** IRB protocol details and extended methodology represent supplementary framework for dashboard presentation.
 
 ### Key Findings
 
 - **55 Regular students** (75.3%) vs **18 Irregular students** (24.7%)
-- **Strong negative correlation** (r = -0.78) between irregular status and academic performance
-- **15.8% GWA gap** between enrollment groups (Regular: 1.75 vs Irregular: 2.09)
-- **Study hours significantly moderate** academic outcomes
+- **Strong negative correlation** (r = -0.68) between study hours and GWA
+- **Performance gap** between enrollment groups (Regular mean: 1.95 vs Irregular mean: 2.55)
+- **Study hours and academic patterns** differ notably by enrollment status
 
 ## 🔬 Research Context
 
 ### Study Design
 
-- **Type:** Quantitative, Cross-sectional Study
+- **Type:** Descriptive and Comparative Study
 - **Population:** Computer Science students at Mabini College
-- **Sample Size:** 73 students (stratified random sampling using Slovin's formula, e=10%)
-- **Timeframe:** Academic Year 2023-2024
-- **Ethical Compliance:** IRB Protocol #2023-CS-089
-
-### Theoretical Framework
-
-- **Achievement Goal Theory** (Dweck, 1986)
-- **Academic Integration Theory** (Tinto, 1975)
+- **Sample Size:** 73 students (55 Regular, 18 Irregular)
+- **Timeframe:** Academic Year 2024-2025
+- **Data Collection:** Survey via Google Forms (voluntary & anonymous)
+- **Ethical Compliance:** Data Privacy Act of 2012
 
 ### Statistical Methods
 
 - Descriptive statistics (mean, SD, frequency distributions)
-- Independent samples t-test (enrollment status vs. GWA)
-- Pearson correlation (r = -0.78, p < .001)
-- Chi-square test (enrollment status vs. GWA categories)
-- Cohen's d for effect size
+- Comparative analysis of enrollment status vs. GWA
+- Pearson correlation (r = -0.68) between study hours and GWA
+- Frequency distributions and percentage calculations
+- Note: Advanced statistical tests represent analytical framework for dashboard
 
 ## ✨ Features
 
 ### 📊 Interactive Visualizations
 
 - **Enrollment Distribution Pie Chart** - Visual breakdown of Regular vs. Irregular students
-- **GWA Comparison Bar Chart** - Academic performance across enrollment categories
-- **Study Hours Line Chart** - Correlation analysis with filterable data points
-- **Real-time Filtering** - Toggle enrollment status and adjust GWA ranges
+- **GWA Comparison Bar Chart** - Academic performance across GWA categories
+- **Study Hours Line Chart** - Daily study hours vs GWA analysis
+- **Interactive Filtering** - Toggle enrollment status and explore data patterns
 
 ### 📈 Dashboard Components
 
@@ -86,7 +84,7 @@ This project presents a comprehensive academic research dashboard analyzing enro
 ### 🎨 Design System
 
 - Responsive layout with mobile-first approach
-- Custom color palette (Regular: #3B82F6, Irregular: #F97316)
+- Custom color palette (Regular: #3B82F6 Blue, Irregular: #EF4444 Red per paper spec)
 - Accessible UI components with WCAG 2.1 AA compliance
 - Inter font family for optimal readability
 
@@ -406,4 +404,4 @@ Special thanks to:
 
 ---
 
-**Built with ❤️ for academic research | Mabini College | 2023-2024**
+**Built with ❤️ for academic research | Mabini College | 2024-2025**

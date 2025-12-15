@@ -20,10 +20,20 @@ export default function ReferencesPage() {
           <h1 className="mb-6 text-3xl font-bold text-gray-900">References</h1>
 
           <p className="mb-8 text-gray-600">
-            The following sources informed the theoretical framework,
-            methodology, and interpretation of this study. Citations follow the
-            American Psychological Association (APA) 7th edition format.
+            The following sources represent academic framework and context for this
+            dashboard presentation. Primary study references are documented in the research paper.
+            Citations follow the American Psychological Association (APA) 7th edition format.
           </p>
+
+          <div className="mb-8 rounded-lg bg-blue-50 p-5 border-l-4 border-blue-500">
+            <h3 className="text-sm font-bold text-blue-900 mb-2">ℹ️ Dashboard Context</h3>
+            <p className="text-sm text-blue-800 leading-relaxed">
+              <strong>Research paper primary references:</strong> Khanal (2019) - Tribhuvan University Journal;
+              IJRPR study on irregular student challenges; ResearchGate publications on lived experiences.
+              Additional references listed below provide supplementary academic context and framework
+              for dashboard presentation.
+            </p>
+          </div>
 
           {/* Theoretical Framework */}
           <section className="mb-8">

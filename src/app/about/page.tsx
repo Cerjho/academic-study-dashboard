@@ -30,7 +30,7 @@ export default function AboutPage() {
               This interactive dashboard presents findings from a quantitative
               study examining the relationship between enrollment status and
               academic achievement among Computer Science students at Mabini
-              College. The research was conducted during the 2023-2024 academic
+              College. The research was conducted during the 2024-2025 academic
               year and aims to inform institutional policies and student support
               services.
             </p>
@@ -163,13 +163,13 @@ export default function AboutPage() {
                   <dt className="mb-1 text-sm font-medium text-gray-700">
                     Academic Year
                   </dt>
-                  <dd className="text-sm text-gray-900">2023-2024</dd>
+                  <dd className="text-sm text-gray-900">2024-2025</dd>
                 </div>
                 <div>
                   <dt className="mb-1 text-sm font-medium text-gray-700">
-                    IRB Protocol
+                    Ethical Compliance
                   </dt>
-                  <dd className="text-sm text-gray-900">#2023-CS-089</dd>
+                  <dd className="text-sm text-gray-900">Data Privacy Act 2012</dd>
                 </div>
                 <div>
                   <dt className="mb-1 text-sm font-medium text-gray-700">
@@ -182,7 +182,7 @@ export default function AboutPage() {
                     Data Collection Period
                   </dt>
                   <dd className="text-sm text-gray-900">
-                    September 1-14, 2023
+                    November 2024
                   </dd>
                 </div>
                 <div>
@@ -210,23 +210,14 @@ export default function AboutPage() {
 
               <div className="rounded-lg border border-gray-200 p-5">
                 <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                  Principal Investigator
+                  Research Instructor
                 </h3>
                 <address className="not-italic">
                   <p className="mb-2 text-sm text-gray-700">
-                    <strong>Dr. Maria L. Santos</strong>
+                    <strong>Enova, Aeron Dave C.</strong>
                   </p>
                   <p className="mb-1 text-sm text-gray-700">
-                    📧 Email:{' '}
-                    <a
-                      href="mailto:mlsantos@mabini.edu.ph"
-                      className="text-regular-600 hover:text-regular-700 underline"
-                    >
-                      mlsantos@mabini.edu.ph
-                    </a>
-                  </p>
-                  <p className="mb-1 text-sm text-gray-700">
-                    📞 Phone: +63 (2) 8123-4567 ext. 305
+                    Position: Research Instructor
                   </p>
                   <p className="mb-1 text-sm text-gray-700">
                     📧 Email:{' '}

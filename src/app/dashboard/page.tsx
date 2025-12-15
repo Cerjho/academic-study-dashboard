@@ -317,7 +317,7 @@ export default function DashboardPage() {
           <SectionWrapper
             id="recommendations"
             title="Recommendations"
-            description="Evidence-based recommendations for institutional improvement"
+            description="Evidence-based recommendations extrapolated from study findings for institutional consideration"
           >
             <InsightPanel>
               <InsightCard

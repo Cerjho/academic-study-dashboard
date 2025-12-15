@@ -83,7 +83,7 @@ export function generateGWAFinding(
   const gapValue = Math.abs(gap.gap).toFixed(2);
   const percentDiff = Math.abs(gap.percentage).toFixed(1);
 
-  return `Regular students demonstrate significantly better academic performance with a mean GWA of ${regularMean} (median: ${regularMedian}) compared to Irregular students with a mean GWA of ${irregularMean} (median: ${irregularMedian}). The performance gap of ${gapValue} GWA points (${percentDiff}% difference) is ${gap.magnitude} in magnitude, suggesting that enrollment status has a substantial impact on academic achievement.`;
+  return `Regular students demonstrate notably better academic performance with a mean GWA of ${regularMean} (median: ${regularMedian}) compared to Irregular students with a mean GWA of ${irregularMean} (median: ${irregularMedian}). The performance gap of ${gapValue} GWA points (${percentDiff}% difference) is ${gap.magnitude} in magnitude, suggesting that enrollment status has a substantial impact on academic achievement.`;
 }
 
 /**
@@ -123,6 +123,7 @@ export function generateStudyEfficiencyImplication(): string {
 
 /**
  * Generate recommendation for irregular students
+ * Note: Recommendations are evidence-based extrapolations from study findings
  */
 export function generateIrregularSupportRecommendation(): string {
   return `Implement a comprehensive support program specifically designed for Irregular students, including flexible consultation hours, peer mentoring from successful Irregular students, and academic advising that addresses the unique challenges of non-standard progression paths. Consider creating study groups that accommodate varied schedules.`;

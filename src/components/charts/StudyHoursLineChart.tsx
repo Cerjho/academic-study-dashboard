@@ -66,7 +66,7 @@ function CustomTooltip({ active, payload, label }: any) {
 
 export function StudyHoursLineChart({
   data,
-  correlationCoefficient = -0.78,
+  correlationCoefficient = -0.68,
   className,
 }: StudyHoursLineChartProps) {
 
@@ -88,7 +88,7 @@ export function StudyHoursLineChart({
           <XAxis
             dataKey="hoursRange"
             label={{
-              value: 'Study Hours per Week',
+              value: 'Study Hours per Day',
               position: 'insideBottom',
               offset: -10,
               style: { fontSize: 12 },

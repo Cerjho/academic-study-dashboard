@@ -28,11 +28,12 @@ export const ENROLLMENT_STATUS = {
 /**
  * Color Palette
  * WCAG AA compliant and colorblind-friendly
+ * Per paper specification: Blue for Regular, Red for Irregular students
  */
 export const COLORS = {
   // Primary colors for enrollment status
-  REGULAR: '#3B82F6', // Blue-500
-  IRREGULAR: '#EF4444', // Red-500
+  REGULAR: '#3B82F6', // Blue-500 (Blue per paper)
+  IRREGULAR: '#EF4444', // Red-500 (Red per paper specification)
 
   // Supporting colors
   NEUTRAL: '#6B7280', // Gray-500

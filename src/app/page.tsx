@@ -153,8 +153,8 @@ export default function Home() {
                 Research Ethics
               </h3>
               <p className="text-gray-600">
-                IRB-approved methodology with full data privacy and participant
-                consent
+                Ethical research standards with full data privacy and voluntary
+                anonymous participation
               </p>
             </div>
           </div>

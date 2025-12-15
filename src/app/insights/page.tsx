@@ -194,7 +194,7 @@ export default function InsightsPage() {
           <SectionWrapper
             id="recommendations"
             title="Evidence-Based Recommendations"
-            description="Actionable strategies for institutional improvement"
+            description="Actionable strategies extrapolated from study findings for institutional consideration"
           >
             <InsightPanel>
               <InsightCard

@@ -104,7 +104,7 @@ This directory contains the static JSON data files for the academic study dashbo
     - `avgGWA`: Average GWA
 
 - `correlationCoefficient`: Pearson correlation (-1 to 1)
-  - **-0.78**: Strong negative correlation
+  - **-0.68**: Strong negative correlation (actual study value)
   - Interpretation: More study hours = Lower GWA (better performance)
 
 **Pattern Observed**:
@@ -166,10 +166,10 @@ All data structures have corresponding TypeScript interfaces in `@/types`:
 
 ## 🎨 Color Palette
 
-Consistent color coding across all visualizations:
+Consistent color coding across all visualizations (per research paper specification):
 
-- **Regular Students**: `#3B82F6` (Blue-500)
-- **Irregular Students**: `#F97316` (Orange-500)
+- **Regular Students**: `#3B82F6` (Blue-500) - Blue per paper
+- **Irregular Students**: `#EF4444` (Red-500) - Red per paper specification
 - **Neutral/Gray**: `#6B7280` (Gray-500)
 
 These colors meet WCAG 2.1 AA contrast requirements and are colorblind-friendly when used with patterns or labels.
@@ -180,8 +180,11 @@ These colors meet WCAG 2.1 AA contrast requirements and are colorblind-friendly 
 
 1. **GWA System**: Philippines academic grading (1.0 = highest, 5.0 = failing)
 2. **Sample Size**: n=73 is adequate for exploratory analysis but may limit generalizability
-3. **Academic Year**: Data represents single academic year snapshot
-4. **Limitations**: Self-reported study hours may contain recall bias
+3. **Academic Year**: Data represents single academic year snapshot (2024-2025)
+4. **Study Hours**: Reported as daily study time (not weekly)
+5. **Limitations**: Self-reported study hours may contain recall bias
+6. **Statistics**: Mean, median, and standard deviation values are calculated from distribution data
+7. **Correlation**: r = -0.68 represents strong negative correlation between study hours and GWA
 
 ---
 

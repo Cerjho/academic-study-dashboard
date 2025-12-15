@@ -21,16 +21,25 @@ export default function EthicsPage() {
             Ethics & Privacy
           </h1>
 
+          <div className="mb-6 rounded-lg bg-blue-50 p-5 border-l-4 border-blue-500">
+            <h3 className="text-sm font-bold text-blue-900 mb-2">ℹ️ Dashboard Context</h3>
+            <p className="text-sm text-blue-800 leading-relaxed">
+              <strong>Research paper ethical compliance:</strong> Data Privacy Act 2012, no personal/sensitive
+              information collected, voluntary anonymous participation, data used for academic purposes only,
+              honest presentation without manipulation. This page provides additional ethical framework context
+              for educational dashboard purposes.
+            </p>
+          </div>
+
           <div className="mb-8 rounded-lg bg-green-50 p-4 border border-green-200">
             <div className="flex items-start gap-3">
               <span className="text-2xl">✓</span>
               <div>
                 <p className="font-semibold text-green-900">
-                  IRB Approved Research
+                  Ethical Research Standards
                 </p>
                 <p className="text-sm text-green-800">
-                  Protocol #2023-CS-089 | Approved: August 15, 2023 | Valid
-                  through: August 14, 2024
+                  Complies with Data Privacy Act of 2012 | Academic Year 2024-2025 | Voluntary & Anonymous Participation
                 </p>
               </div>
             </div>
@@ -43,10 +52,9 @@ export default function EthicsPage() {
             </h2>
             <div className="prose prose-gray max-w-none">
               <p className="mb-4 text-gray-700 leading-relaxed">
-                This research adhered to the ethical principles outlined in the{' '}
-                <strong>Belmont Report</strong> (1979) and followed guidelines
-                established by the American Educational Research Association
-                (AERA) Code of Ethics. The study was designed to:
+                This dashboard presentation follows ethical principles outlined in the{' '}
+                <strong>Belmont Report</strong> (1979) and educational research standards.
+                The study was designed to:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>
@@ -65,18 +73,14 @@ export default function EthicsPage() {
               </ul>
 
               <h3 className="mb-2 mt-6 text-lg font-semibold text-gray-800">
-                Participant Rights
+                Key Ethical Measures (As Per Research Paper)
               </h3>
-              <p className="mb-2 text-gray-700 leading-relaxed">
-                All participants were guaranteed the following rights:
-              </p>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                <li>Right to be informed about the study&apos;s purpose and procedures</li>
-                <li>Right to voluntary participation without coercion or penalty</li>
-                <li>Right to withdraw from the study at any time without consequence</li>
-                <li>Right to privacy and confidentiality of personal information</li>
-                <li>Right to ask questions and receive clarification</li>
-                <li>Right to access study results upon completion</li>
+                <li>No personal or sensitive information was collected</li>
+                <li>Participation was voluntary and anonymous</li>
+                <li>Data was used solely for academic and research purposes</li>
+                <li>Results were presented honestly without manipulation or alteration</li>
+                <li>Limitations of the data were transparently communicated</li>
               </ul>
             </div>
           </section>
@@ -84,13 +88,12 @@ export default function EthicsPage() {
           {/* IRB Compliance */}
           <section className="mb-8">
             <h2 className="mb-4 text-2xl font-semibold text-gray-800">
-              Institutional Review Board (IRB) Compliance
+              Ethical Review & Compliance
             </h2>
             <div className="prose prose-gray max-w-none">
               <p className="mb-4 text-gray-700 leading-relaxed">
-                Prior to data collection, the research protocol was submitted to
-                and approved by the <strong>Mabini College Institutional Review Board</strong>{' '}
-                (IRB Protocol #2023-CS-089). The IRB review ensured that:
+                The research adhered to institutional ethical standards and
+                <strong> Data Privacy Act of 2012</strong> requirements. The study ensured that:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>
@@ -115,32 +118,32 @@ export default function EthicsPage() {
 
               <div className="my-6 rounded-lg bg-gray-50 p-5 border border-gray-300">
                 <h4 className="mb-3 font-semibold text-gray-900">
-                  IRB Approval Details
+                  Compliance Details
                 </h4>
                 <dl className="grid grid-cols-1 gap-3 text-sm">
                   <div>
                     <dt className="font-medium text-gray-700">
-                      Protocol Number:
+                      Academic Year:
                     </dt>
-                    <dd className="text-gray-600">2023-CS-089</dd>
+                    <dd className="text-gray-600">2024-2025</dd>
                   </div>
                   <div>
-                    <dt className="font-medium text-gray-700">Approval Date:</dt>
-                    <dd className="text-gray-600">August 15, 2023</dd>
+                    <dt className="font-medium text-gray-700">Data Collection:</dt>
+                    <dd className="text-gray-600">November 2024</dd>
                   </div>
                   <div>
                     <dt className="font-medium text-gray-700">
-                      Expiration Date:
+                      Privacy Compliance:
                     </dt>
-                    <dd className="text-gray-600">August 14, 2024</dd>
+                    <dd className="text-gray-600">Data Privacy Act of 2012</dd>
                   </div>
                   <div>
                     <dt className="font-medium text-gray-700">Risk Level:</dt>
                     <dd className="text-gray-600">Minimal Risk</dd>
                   </div>
                   <div>
-                    <dt className="font-medium text-gray-700">Review Type:</dt>
-                    <dd className="text-gray-600">Expedited Review</dd>
+                    <dt className="font-medium text-gray-700">Participation:</dt>
+                    <dd className="text-gray-600">Voluntary & Anonymous</dd>
                   </div>
                 </dl>
               </div>
