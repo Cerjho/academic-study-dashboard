@@ -1,0 +1,49 @@
+{
+  "studyHoursPerWeek": [
+    {
+      "hoursRange": "0-5",
+      "regular": {
+        "count": 8,
+        "avgGWA": 2.45
+      },
+      "irregular": {
+        "count": 5,
+        "avgGWA": 2.7
+      }
+    },
+    {
+      "hoursRange": "6-10",
+      "regular": {
+        "count": 18,
+        "avgGWA": 2.05
+      },
+      "irregular": {
+        "count": 7,
+        "avgGWA": 2.3
+      }
+    },
+    {
+      "hoursRange": "11-15",
+      "regular": {
+        "count": 20,
+        "avgGWA": 1.75
+      },
+      "irregular": {
+        "count": 4,
+        "avgGWA": 1.95
+      }
+    },
+    {
+      "hoursRange": "16+",
+      "regular": {
+        "count": 9,
+        "avgGWA": 1.55
+      },
+      "irregular": {
+        "count": 2,
+        "avgGWA": 1.7
+      }
+    }
+  ],
+  "correlationCoefficient": -0.78
+}

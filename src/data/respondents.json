@@ -1,0 +1,24 @@
+{
+  "studyMetadata": {
+    "title": "The Impact of Enrollment Status on Academic Achievement",
+    "institution": "Mabini College",
+    "program": "Computer Science",
+    "academicYear": "2024-2025",
+    "totalRespondents": 73,
+    "dataCollectionDate": "2024-11-15"
+  },
+  "enrollmentDistribution": [
+    {
+      "status": "Regular",
+      "count": 55,
+      "percentage": 75.34,
+      "color": "#3B82F6"
+    },
+    {
+      "status": "Irregular",
+      "count": 18,
+      "percentage": 24.66,
+      "color": "#F97316"
+    }
+  ]
+}

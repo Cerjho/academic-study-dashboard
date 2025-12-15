@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "range": "1.00-1.50",
+      "label": "Excellent",
+      "regular": {
+        "count": 12,
+        "percentage": 21.82
+      },
+      "irregular": {
+        "count": 2,
+        "percentage": 11.11
+      }
+    },
+    {
+      "range": "1.51-2.00",
+      "label": "Very Good",
+      "regular": {
+        "count": 28,
+        "percentage": 50.91
+      },
+      "irregular": {
+        "count": 6,
+        "percentage": 33.33
+      }
+    },
+    {
+      "range": "2.01-2.50",
+      "label": "Good",
+      "regular": {
+        "count": 10,
+        "percentage": 18.18
+      },
+      "irregular": {
+        "count": 7,
+        "percentage": 38.89
+      }
+    },
+    {
+      "range": "2.51-3.00",
+      "label": "Fair",
+      "regular": {
+        "count": 5,
+        "percentage": 9.09
+      },
+      "irregular": {
+        "count": 3,
+        "percentage": 16.67
+      }
+    }
+  ],
+  "statistics": {
+    "regular": {
+      "mean": 1.85,
+      "median": 1.8,
+      "stdDeviation": 0.42,
+      "mode": 1.75
+    },
+    "irregular": {
+      "mean": 2.15,
+      "median": 2.1,
+      "stdDeviation": 0.58,
+      "mode": 2.25
+    }
+  }
+}
