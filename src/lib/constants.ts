@@ -32,7 +32,7 @@ export const ENROLLMENT_STATUS = {
 export const COLORS = {
   // Primary colors for enrollment status
   REGULAR: '#3B82F6', // Blue-500
-  IRREGULAR: '#F97316', // Orange-500
+  IRREGULAR: '#EF4444', // Red-500
 
   // Supporting colors
   NEUTRAL: '#6B7280', // Gray-500
@@ -47,7 +47,7 @@ export const COLORS = {
   // Chart colors (extended palette for multiple series)
   CHART_PALETTE: [
     '#3B82F6', // Blue
-    '#F97316', // Orange
+    '#EF4444', // Red
     '#10B981', // Green
     '#8B5CF6', // Purple
     '#F59E0B', // Amber

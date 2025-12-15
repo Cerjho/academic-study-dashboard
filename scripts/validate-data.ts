@@ -27,7 +27,7 @@ if (validation.valid) {
   console.log(`   Regular Students: ${respondents.enrollmentDistribution[0].count} (${respondents.enrollmentDistribution[0].percentage}%)`);
   console.log(`   Irregular Students: ${respondents.enrollmentDistribution[1].count} (${respondents.enrollmentDistribution[1].percentage}%)`);
   console.log(`   GWA Categories: ${gwa.categories.length}`);
-  console.log(`   Study Hour Ranges: ${studyHabits.studyHoursPerWeek.length}`);
+  console.log(`   Study Hour Ranges: ${studyHabits.studyHoursPerDay.length}`);
   console.log(`   Correlation Coefficient: ${studyHabits.correlationCoefficient}`);
 } else {
   console.error('❌ Data validation failed:\n');

@@ -5,9 +5,11 @@ This directory contains the static JSON data files for the academic study dashbo
 ## 📁 Data Files
 
 ### 1. `respondents.json`
+
 **Purpose**: Study metadata and enrollment distribution
 
 **Structure**:
+
 - `studyMetadata`: Core information about the research study
   - `title`: Study title
   - `institution`: Research institution name
@@ -23,6 +25,7 @@ This directory contains the static JSON data files for the academic study dashbo
   - `color`: Hex color code for visual consistency
 
 **Sample**:
+
 ```json
 {
   "studyMetadata": {
@@ -47,9 +50,11 @@ This directory contains the static JSON data files for the academic study dashbo
 ---
 
 ### 2. `gwaDistribution.json`
+
 **Purpose**: Academic performance analysis by GWA (General Weighted Average) ranges
 
 **Structure**:
+
 - `categories`: Array of GWA ranges with student counts
   - `range`: GWA range (e.g., "1.00-1.50")
   - `label`: Descriptive label (Excellent, Very Good, Good, Fair)
@@ -68,6 +73,7 @@ This directory contains the static JSON data files for the academic study dashbo
     - `mode`: Most frequent GWA
 
 **GWA Scale** (Lower is better):
+
 - 1.00-1.50: Excellent
 - 1.51-2.00: Very Good
 - 2.01-2.50: Good
@@ -75,6 +81,7 @@ This directory contains the static JSON data files for the academic study dashbo
 - 3.01-5.00: Failing (not included in this dataset)
 
 **Key Findings**:
+
 - Regular students: Mean GWA = 1.85 (Very Good)
 - Irregular students: Mean GWA = 2.15 (Good)
 - Difference: 0.30 GWA points in favor of regular students
@@ -82,9 +89,11 @@ This directory contains the static JSON data files for the academic study dashbo
 ---
 
 ### 3. `studyHabits.json`
+
 **Purpose**: Correlation between study hours and academic performance
 
 **Structure**:
+
 - `studyHoursPerWeek`: Array of study hour ranges
   - `hoursRange`: Time range (e.g., "0-5", "6-10", "16+")
   - `regular`: Regular students' data
@@ -99,6 +108,7 @@ This directory contains the static JSON data files for the academic study dashbo
   - Interpretation: More study hours = Lower GWA (better performance)
 
 **Pattern Observed**:
+
 | Hours/Week | Regular Avg GWA | Irregular Avg GWA |
 |-----------|-----------------|-------------------|
 | 0-5       | 2.45 (Good)     | 2.70 (Fair)       |
@@ -111,6 +121,7 @@ This directory contains the static JSON data files for the academic study dashbo
 ## 🔧 Usage in Components
 
 ### Importing Data
+
 ```typescript
 import { 
   getRespondentData, 
@@ -125,7 +136,9 @@ const studyData = getStudyHabitsData();
 ```
 
 ### Type Safety
+
 All data structures have corresponding TypeScript interfaces in `@/types`:
+
 - `RespondentData`
 - `GWADistributionData`
 - `StudyHabitsData`
@@ -135,13 +148,15 @@ All data structures have corresponding TypeScript interfaces in `@/types`:
 ## 📈 Data Integrity
 
 **Validation Checks**:
+
 - ✅ Total respondents = Sum of enrollment distribution (73)
 - ✅ Enrollment percentages sum to ~100% (75.34 + 24.66 = 100.00)
 - ✅ GWA category counts match enrollment distribution
 - ✅ Study hours counts match enrollment distribution
 - ✅ All percentages calculated consistently (2 decimal precision)
 
-**Data Source**: 
+**Data Source**:
+
 - Anonymized student records from Mabini College
 - IRB-approved research study
 - Data collection period: November 2024
@@ -152,6 +167,7 @@ All data structures have corresponding TypeScript interfaces in `@/types`:
 ## 🎨 Color Palette
 
 Consistent color coding across all visualizations:
+
 - **Regular Students**: `#3B82F6` (Blue-500)
 - **Irregular Students**: `#F97316` (Orange-500)
 - **Neutral/Gray**: `#6B7280` (Gray-500)
@@ -172,6 +188,7 @@ These colors meet WCAG 2.1 AA contrast requirements and are colorblind-friendly 
 ## 🔄 Data Updates
 
 To update the data:
+
 1. Modify the respective JSON file
 2. Ensure TypeScript types still match
 3. Run `npm run lint` to check for errors

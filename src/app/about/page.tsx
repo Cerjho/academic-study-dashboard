@@ -97,93 +97,48 @@ export default function AboutPage() {
               Research Team
             </h2>
             <div className="space-y-6">
-              {/* Principal Investigator */}
+              {/* Research Instructor */}
               <div className="rounded-lg border border-gray-200 p-5">
                 <div className="mb-3 flex items-start justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">
-                      Dr. Maria L. Santos
+                      Enova, Aeron Dave C.
                     </h3>
                     <p className="text-sm text-gray-600">
-                      Principal Investigator
+                      Research Instructor
                     </p>
                   </div>
                   <span className="rounded-full bg-regular-100 px-3 py-1 text-xs font-medium text-regular-700">
-                    Lead Researcher
+                    Instructor
                   </span>
                 </div>
-                <p className="mb-3 text-sm text-gray-700 leading-relaxed">
-                  <strong>Position:</strong> Associate Professor, Department of
-                  Computer Science
-                  <br />
-                  <strong>Credentials:</strong> Ph.D. in Educational Technology,
-                  M.S. in Computer Science
-                  <br />
-                  <strong>Specialization:</strong> Educational data analytics,
-                  learning analytics, CS education research
-                </p>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Dr. Santos has over 12 years of experience in higher education
-                  and has published extensively on student success factors in
-                  STEM disciplines. She leads the Institutional Research
-                  Committee and advises on evidence-based policy development.
+                  Research instructor and advisor for this comparative study on
+                  enrollment status and academic achievement.
                 </p>
               </div>
 
-              {/* Co-Investigators */}
+              {/* Student Researchers */}
               <div className="rounded-lg border border-gray-200 p-5">
-                <div className="mb-3 flex items-start justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Prof. Ramon G. Dela Cruz
-                    </h3>
-                    <p className="text-sm text-gray-600">Co-Investigator</p>
-                  </div>
-                  <span className="rounded-full bg-irregular-100 px-3 py-1 text-xs font-medium text-irregular-700">
-                    Co-Researcher
-                  </span>
+                <div className="mb-3">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    Student Researchers
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Bachelor of Science in Computer Science
+                  </p>
                 </div>
-                <p className="mb-3 text-sm text-gray-700 leading-relaxed">
-                  <strong>Position:</strong> Program Chair, BS Computer Science
-                  <br />
-                  <strong>Credentials:</strong> M.S. in Computer Science,
-                  Certified Data Analyst
-                  <br />
-                  <strong>Specialization:</strong> Curriculum development,
-                  program assessment, quantitative analysis
-                </p>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Prof. Dela Cruz contributed to research design, data
-                  collection coordination, and interpretation of findings within
-                  the context of program improvement initiatives.
-                </p>
-              </div>
-
-              <div className="rounded-lg border border-gray-200 p-5">
-                <div className="mb-3 flex items-start justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Ms. Patricia A. Reyes
-                    </h3>
-                    <p className="text-sm text-gray-600">Research Assistant</p>
-                  </div>
-                  <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
-                    Research Support
-                  </span>
-                </div>
-                <p className="mb-3 text-sm text-gray-700 leading-relaxed">
-                  <strong>Position:</strong> Graduate Student, Educational
-                  Statistics
-                  <br />
-                  <strong>Credentials:</strong> B.S. in Statistics, Data Science
-                  Certificate
-                  <br />
-                  <strong>Specialization:</strong> Statistical analysis, data
-                  visualization, survey design
-                </p>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Ms. Reyes assisted with data management, statistical analysis,
-                  and development of the interactive dashboard visualizations.
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>• <strong>Balon, Niccolo</strong></li>
+                  <li>• <strong>Jarapa, Arabella P.</strong></li>
+                  <li>• <strong>Balangbang, Dranreb wen A.</strong></li>
+                  <li>• <strong>Barcela, Jhocer</strong></li>
+                  <li>• <strong>Magnampo, Benedict Samuel</strong></li>
+                </ul>
+                <p className="mt-3 text-sm text-gray-700 leading-relaxed">
+                  These student researchers contributed to research design, data
+                  collection, analysis, and the development of this interactive
+                  dashboard as part of their coursework requirements.
                 </p>
               </div>
             </div>
@@ -274,28 +229,6 @@ export default function AboutPage() {
                     📞 Phone: +63 (2) 8123-4567 ext. 305
                   </p>
                   <p className="mb-1 text-sm text-gray-700">
-                    🏢 Office: Computer Science Department, Room 305, Building A
-                  </p>
-                  <p className="text-sm text-gray-700">
-                    ⏰ Office Hours: Monday-Friday, 2:00 PM - 4:00 PM (by
-                    appointment)
-                  </p>
-                </address>
-              </div>
-
-              <div className="mt-4 rounded-lg border border-gray-200 p-5">
-                <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                  Department Contact
-                </h3>
-                <address className="not-italic">
-                  <p className="mb-1 text-sm text-gray-700">
-                    <strong>Department of Computer Science</strong>
-                  </p>
-                  <p className="mb-1 text-sm text-gray-700">Mabini College</p>
-                  <p className="mb-1 text-sm text-gray-700">
-                    123 Academic Avenue, Quezon City, Philippines
-                  </p>
-                  <p className="mb-1 text-sm text-gray-700">
                     📧 Email:{' '}
                     <a
                       href="mailto:cs.department@mabini.edu.ph"
@@ -305,13 +238,24 @@ export default function AboutPage() {
                     </a>
                   </p>
                   <p className="text-sm text-gray-700">
-                    🌐 Website:{' '}
-                    <a
-                      href="https://www.mabini.edu.ph/cs"
-                      className="text-regular-600 hover:text-regular-700 underline"
-                    >
-                      www.mabini.edu.ph/cs
-                    </a>
+                    🏢 Office: Computer Science Department, Mabini Colleges, Inc.
+                  </p>
+                </address>
+              </div>
+
+              <div className="mt-4 rounded-lg border border-gray-200 p-5">
+                <h3 className="mb-3 text-lg font-semibold text-gray-900">
+                  For Research Inquiries
+                </h3>
+                <address className="not-italic">
+                  <p className="mb-1 text-sm text-gray-700">
+                    <strong>Instructor: Enova, Aeron Dave C.</strong>
+                  </p>
+                  <p className="mb-1 text-sm text-gray-700">
+                    College of Computer Studies
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    Mabini Colleges, Inc.
                   </p>
                 </address>
               </div>

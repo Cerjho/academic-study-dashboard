@@ -40,6 +40,7 @@ This project presents a comprehensive academic research dashboard analyzing enro
 ## 🔬 Research Context
 
 ### Study Design
+
 - **Type:** Quantitative, Cross-sectional Study
 - **Population:** Computer Science students at Mabini College
 - **Sample Size:** 73 students (stratified random sampling using Slovin's formula, e=10%)
@@ -47,10 +48,12 @@ This project presents a comprehensive academic research dashboard analyzing enro
 - **Ethical Compliance:** IRB Protocol #2023-CS-089
 
 ### Theoretical Framework
+
 - **Achievement Goal Theory** (Dweck, 1986)
 - **Academic Integration Theory** (Tinto, 1975)
 
 ### Statistical Methods
+
 - Descriptive statistics (mean, SD, frequency distributions)
 - Independent samples t-test (enrollment status vs. GWA)
 - Pearson correlation (r = -0.78, p < .001)
@@ -60,24 +63,28 @@ This project presents a comprehensive academic research dashboard analyzing enro
 ## ✨ Features
 
 ### 📊 Interactive Visualizations
+
 - **Enrollment Distribution Pie Chart** - Visual breakdown of Regular vs. Irregular students
 - **GWA Comparison Bar Chart** - Academic performance across enrollment categories
 - **Study Hours Line Chart** - Correlation analysis with filterable data points
 - **Real-time Filtering** - Toggle enrollment status and adjust GWA ranges
 
 ### 📈 Dashboard Components
+
 - **KPI Cards** - Key performance indicators with trend indicators
 - **Statistical Summary** - Descriptive statistics and correlation analysis
 - **Filter Bar** - Interactive controls for data exploration
 - **Interactive Legend** - Toggle data series visibility
 
 ### 📝 Academic Content
+
 - **Methodology Page** - Research design, sampling, data collection procedures
 - **Ethics Page** - IRB compliance, informed consent, data privacy protocols
 - **References Page** - 47 APA-formatted citations across 9 academic areas
 - **About Page** - Research team profiles and institutional background
 
 ### 🎨 Design System
+
 - Responsive layout with mobile-first approach
 - Custom color palette (Regular: #3B82F6, Irregular: #F97316)
 - Accessible UI components with WCAG 2.1 AA compliance
@@ -86,21 +93,25 @@ This project presents a comprehensive academic research dashboard analyzing enro
 ## 🛠️ Tech Stack
 
 ### Core Framework
+
 - **[Next.js 16.0.10](https://nextjs.org/)** - React framework with App Router
 - **[TypeScript 5](https://www.typescriptlang.org/)** - Type-safe development
 - **[React 19](https://react.dev/)** - UI component library
 
 ### Styling
+
 - **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
 - **CSS Variables** - Custom design tokens via `@theme` directive
 - **Google Fonts (Inter)** - Typography optimization
 
 ### Data Visualization
+
 - **[Recharts 2.15](https://recharts.org/)** - Composable charting library
 - Custom chart wrappers with loading and error states
 - Responsive charts with interactive tooltips
 
 ### Development Tools
+
 - **[ESLint](https://eslint.org/)** - Code linting
 - **[Prettier](https://prettier.io/)** - Code formatting
 - **npm** - Package management (405 packages)
@@ -108,23 +119,27 @@ This project presents a comprehensive academic research dashboard analyzing enro
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - **Node.js** 18.x or higher
 - **npm** 9.x or higher
 
 ### Installation
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/yourusername/academic-study-dashboard.git
 cd academic-study-dashboard
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
 
 3. **Run development server**
+
 ```bash
 npm run dev
 ```
@@ -207,6 +222,7 @@ academic-study-dashboard/
 ## 📊 Data Model
 
 ### Respondent Interface
+
 ```typescript
 interface Respondent {
   id: number;
@@ -219,6 +235,7 @@ interface Respondent {
 ```
 
 ### GWA Distribution Interface
+
 ```typescript
 interface GWADistribution {
   category: string;
@@ -229,6 +246,7 @@ interface GWADistribution {
 ```
 
 ### Study Habits Interface
+
 ```typescript
 interface StudyHabits {
   studyHoursRange: string;
@@ -241,12 +259,14 @@ interface StudyHabits {
 ## 💻 Development
 
 ### Code Quality
+
 - **TypeScript Strict Mode** - Full type safety enabled
 - **ESLint** - Automated code quality checks
 - **Prettier** - Consistent code formatting
 - **Path Aliases** - `@/*` for clean imports
 
 ### Component Development
+
 1. Create component in appropriate directory (`components/`)
 2. Define TypeScript interfaces for props
 3. Implement accessibility features (ARIA labels, keyboard navigation)
@@ -254,6 +274,7 @@ interface StudyHabits {
 5. Export through index.ts for clean imports
 
 ### Adding New Data
+
 1. Update JSON files in `src/data/`
 2. Update corresponding TypeScript interfaces in `src/types/`
 3. Add validation logic in `src/lib/validation.ts`
@@ -264,6 +285,7 @@ interface StudyHabits {
 ### Vercel (Recommended)
 
 1. **Push to GitHub**
+
 ```bash
 git add .
 git commit -m "Initial commit"
@@ -289,6 +311,7 @@ git push origin main
 For fully static export:
 
 1. Update `next.config.ts`:
+
 ```typescript
 const nextConfig = {
   output: 'export',
@@ -299,6 +322,7 @@ const nextConfig = {
 ```
 
 2. Build:
+
 ```bash
 npm run build
 ```
@@ -308,17 +332,20 @@ npm run build
 ## ⚡ Performance
 
 ### Build Optimization
+
 - **Static Site Generation (SSG)** - All pages pre-rendered at build time
 - **Automatic Code Splitting** - Per-page JavaScript bundles
 - **Image Optimization** - Next.js Image component (disabled for static export)
 - **Font Optimization** - Google Fonts with display swap
 
 ### Bundle Size
+
 - **First Load JS:** ~85 KB (shared by all pages)
 - **Page-specific bundles:** 2-5 KB average
 - **Total package count:** 405 npm packages
 
 ### Performance Targets
+
 - **Lighthouse Score:** 90+ (Performance, Accessibility, Best Practices, SEO)
 - **First Contentful Paint (FCP):** < 1.5s
 - **Largest Contentful Paint (LCP):** < 2.5s
@@ -326,6 +353,7 @@ npm run build
 - **Time to Interactive (TTI):** < 3.5s
 
 ### Optimization Strategies
+
 - Recharts lazy loading for chart components
 - CSS-in-JS avoided (Tailwind CSS for better performance)
 - Minimal runtime JavaScript
@@ -334,6 +362,7 @@ npm run build
 ## ♿ Accessibility
 
 ### WCAG 2.1 Level AA Compliance
+
 - **Semantic HTML** - Proper heading hierarchy (h1-h6)
 - **ARIA Labels** - Screen reader support for interactive elements
 - **Keyboard Navigation** - Full keyboard accessibility
@@ -342,6 +371,7 @@ npm run build
 - **Alt Text** - Descriptive text for all visual content
 
 ### Testing
+
 - Manual keyboard navigation testing
 - Screen reader compatibility (NVDA, JAWS)
 - Color contrast validation
@@ -360,13 +390,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📧 Contact
 
 **Mabini College - Computer Science Department**  
-Email: mlsantos@mabini.edu.ph  
+Email: <mlsantos@mabini.edu.ph>  
 Phone: +63 (2) 8123-4567  
 Office: Room 305, Science Building
 
 ## 🙏 Acknowledgments
 
 Special thanks to:
+
 - 73 Computer Science student participants
 - Mabini College Office of the Registrar
 - Institutional Review Board (IRB)

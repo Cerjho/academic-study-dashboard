@@ -8,7 +8,7 @@
 :root {
   /* Brand Colors */
   --color-regular: #3b82f6;
-  --color-irregular: #f97316;
+  --color-irregular: #ef4444;
   --color-neutral: #6b7280;
 
   /* Semantic Colors */
@@ -71,16 +71,16 @@
   --color-regular-900: #1e3a8a;
 
   --color-irregular-*: initial;
-  --color-irregular-50: #fff7ed;
-  --color-irregular-100: #ffedd5;
-  --color-irregular-200: #fed7aa;
-  --color-irregular-300: #fdba74;
-  --color-irregular-400: #fb923c;
-  --color-irregular-500: #f97316;
-  --color-irregular-600: #ea580c;
-  --color-irregular-700: #c2410c;
-  --color-irregular-800: #9a3412;
-  --color-irregular-900: #7c2d12;
+  --color-irregular-50: #fef2f2;
+  --color-irregular-100: #fee2e2;
+  --color-irregular-200: #fecaca;
+  --color-irregular-300: #fca5a5;
+  --color-irregular-400: #f87171;
+  --color-irregular-500: #ef4444;
+  --color-irregular-600: #dc2626;
+  --color-irregular-700: #b91c1c;
+  --color-irregular-800: #991b1b;
+  --color-irregular-900: #7f1d1d;
 
   /* Font Family */
   --font-sans: var(--font-sans);

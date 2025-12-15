@@ -1,66 +1,66 @@
 {
   "categories": [
     {
-      "range": "1.00-1.50",
+      "range": "1.00-1.49",
       "label": "Excellent",
       "regular": {
         "count": 12,
         "percentage": 21.82
       },
       "irregular": {
-        "count": 2,
-        "percentage": 11.11
+        "count": 0,
+        "percentage": 0
       }
     },
     {
-      "range": "1.51-2.00",
+      "range": "1.50-1.99",
       "label": "Very Good",
       "regular": {
-        "count": 28,
-        "percentage": 50.91
-      },
-      "irregular": {
-        "count": 6,
-        "percentage": 33.33
-      }
-    },
-    {
-      "range": "2.01-2.50",
-      "label": "Good",
-      "regular": {
-        "count": 10,
-        "percentage": 18.18
-      },
-      "irregular": {
-        "count": 7,
-        "percentage": 38.89
-      }
-    },
-    {
-      "range": "2.51-3.00",
-      "label": "Fair",
-      "regular": {
-        "count": 5,
-        "percentage": 9.09
+        "count": 20,
+        "percentage": 36.36
       },
       "irregular": {
         "count": 3,
         "percentage": 16.67
       }
+    },
+    {
+      "range": "2.00-2.49",
+      "label": "Good",
+      "regular": {
+        "count": 22,
+        "percentage": 40.00
+      },
+      "irregular": {
+        "count": 3,
+        "percentage": 16.67
+      }
+    },
+    {
+      "range": "2.50-2.99",
+      "label": "Fair",
+      "regular": {
+        "count": 1,
+        "percentage": 1.82
+      },
+      "irregular": {
+        "count": 12,
+        "percentage": 66.67
+      }
     }
   ],
   "statistics": {
     "regular": {
-      "mean": 1.85,
-      "median": 1.8,
-      "stdDeviation": 0.42,
-      "mode": 1.75
+      "mean": 1.95,
+      "median": 2.0,
+      "stdDeviation": 0.38,
+      "mode": 2.0
     },
     "irregular": {
-      "mean": 2.15,
-      "median": 2.1,
-      "stdDeviation": 0.58,
-      "mode": 2.25
+      "mean": 2.55,
+      "median": 2.6,
+      "stdDeviation": 0.42,
+      "mode": 2.7
     }
   }
 }

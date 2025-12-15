@@ -114,7 +114,7 @@ export function validateStudyHabitsData(
   )?.count;
 
   // Check regular student counts
-  const regularSum = studyData.studyHoursPerWeek.reduce(
+  const regularSum = studyData.studyHoursPerDay.reduce(
     (sum, range) => sum + range.regular.count,
     0
   );
@@ -125,7 +125,7 @@ export function validateStudyHabitsData(
   }
 
   // Check irregular student counts
-  const irregularSum = studyData.studyHoursPerWeek.reduce(
+  const irregularSum = studyData.studyHoursPerDay.reduce(
     (sum, range) => sum + range.irregular.count,
     0
   );

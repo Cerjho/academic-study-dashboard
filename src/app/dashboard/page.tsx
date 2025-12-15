@@ -250,10 +250,10 @@ export default function DashboardPage() {
           >
             <ChartContainer
               title="Study Hours vs Academic Performance"
-              description="Trend analysis showing the relationship between study time and GWA"
+              description="Trend analysis showing the relationship between daily study time and GWA"
             >
               <StudyHoursLineChart
-                data={studyHabitsData.studyHoursPerWeek.map((range) => ({
+                data={studyHabitsData.studyHoursPerDay.map((range) => ({
                   hoursRange: range.hoursRange,
                   regularGWA: range.regular.avgGWA,
                   irregularGWA: range.irregular.avgGWA,

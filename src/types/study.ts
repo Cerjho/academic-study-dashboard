@@ -65,6 +65,7 @@ export interface StudyHoursData {
 }
 
 export interface StudyHabitsData {
-  studyHoursPerWeek: StudyHoursData[];
+  studyHoursPerDay: StudyHoursData[];
   correlationCoefficient: number;
+  note?: string;
 }
