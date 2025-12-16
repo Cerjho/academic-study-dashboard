@@ -15,7 +15,6 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Insights', href: '/insights' },
-  { name: 'Methodology', href: '/methodology' },
   { name: 'Ethics', href: '/ethics' },
   { name: 'References', href: '/references' },
   { name: 'About', href: '/about' },
