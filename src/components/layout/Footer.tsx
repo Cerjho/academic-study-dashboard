@@ -9,7 +9,6 @@ import Link from 'next/link';
 const footerLinks = {
   study: [
     { name: 'Dashboard', href: '/dashboard' },
-    { name: 'Methodology', href: '/methodology' },
     { name: 'Ethics & Privacy', href: '/ethics' },
     { name: 'References', href: '/references' },
   ],
