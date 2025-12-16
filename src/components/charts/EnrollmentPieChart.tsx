@@ -8,7 +8,6 @@ import {
   ResponsiveContainer,
   Legend,
   Tooltip,
-  Sector,
 } from 'recharts';
 import { COLORS } from '@/lib/constants';
 import { formatNumber, calculatePercentage } from '@/lib/utils';
