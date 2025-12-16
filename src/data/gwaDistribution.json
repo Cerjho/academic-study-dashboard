@@ -29,7 +29,7 @@
       "label": "Good",
       "regular": {
         "count": 22,
-        "percentage": 40.00
+        "percentage": 40
       },
       "irregular": {
         "count": 3,
@@ -38,7 +38,7 @@
     },
     {
       "range": "2.50-2.99",
-      "label": "Fair",
+      "label": "Satisfactory",
       "regular": {
         "count": 1,
         "percentage": 1.82
@@ -51,16 +51,16 @@
   ],
   "statistics": {
     "regular": {
-      "mean": 1.95,
-      "median": 2.0,
-      "stdDeviation": 0.38,
-      "mode": 2.0
+      "mean": 1.86,
+      "median": 1.75,
+      "stdDeviation": 0.4,
+      "mode": 2.25
     },
     "irregular": {
-      "mean": 2.55,
-      "median": 2.6,
-      "stdDeviation": 0.42,
-      "mode": 2.7
+      "mean": 2.5,
+      "median": 2.75,
+      "stdDeviation": 0.38,
+      "mode": 2.75
     }
   }
 }

@@ -3,48 +3,48 @@
     {
       "hoursRange": "<1 hour",
       "regular": {
-        "count": 5,
-        "avgGWA": 2.35
+        "count": 10,
+        "avgGWA": 1.85
       },
       "irregular": {
         "count": 3,
-        "avgGWA": 2.75
+        "avgGWA": 2.58
       }
     },
     {
       "hoursRange": "1-2 hours",
       "regular": {
-        "count": 12,
-        "avgGWA": 2.15
+        "count": 11,
+        "avgGWA": 2.2
       },
       "irregular": {
         "count": 8,
-        "avgGWA": 2.65
+        "avgGWA": 2.56
       }
     },
     {
       "hoursRange": "3-4 hours",
       "regular": {
-        "count": 17,
-        "avgGWA": 1.95
+        "count": 13,
+        "avgGWA": 2.17
       },
       "irregular": {
         "count": 6,
-        "avgGWA": 2.45
+        "avgGWA": 2.5
       }
     },
     {
       "hoursRange": ">4 hours",
       "regular": {
         "count": 21,
-        "avgGWA": 1.75
+        "avgGWA": 1.49
       },
       "irregular": {
         "count": 1,
-        "avgGWA": 2.0
+        "avgGWA": 1.75
       }
     }
   ],
-  "correlationCoefficient": -0.68,
-  "note": "Study hours reported as daily study time. Regular students show more intensive study routines (21 of 55 students = 38.18% study >4 hours/day) compared to irregular students (1 of 18 students = 5.56% study >4 hours/day). Note: Paper reports 38.89% for regular students based on available data."
+  "correlationCoefficient": -0.494,
+  "note": "Negative correlation indicates that more study hours correlate with lower GWA values (better grades)"
 }

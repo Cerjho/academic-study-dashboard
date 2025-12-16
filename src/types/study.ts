@@ -69,3 +69,6 @@ export interface StudyHabitsData {
   correlationCoefficient: number;
   note?: string;
 }
+
+// Alias for clarity
+export type GWADistribution = GWADistributionData;

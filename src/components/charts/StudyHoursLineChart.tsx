@@ -29,34 +29,67 @@ interface StudyHoursData {
 interface StudyHoursLineChartProps {
   data: StudyHoursData[];
   correlationCoefficient?: number;
+  statusFilter?: 'all' | 'regular' | 'irregular';
   className?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function CustomTooltip({ active, payload, label }: any) {
   if (active && payload && payload.length) {
+    const regularGWA = payload[0]?.value as number;
+    const irregularGWA = payload[1]?.value as number;
+    
+    // Handle cases where only one line is showing
+    const hasRegular = regularGWA !== undefined;
+    const hasIrregular = irregularGWA !== undefined;
+    
+    const gap = hasRegular && hasIrregular ? Math.abs(regularGWA - irregularGWA) : 0;
+    const avgGWA = hasRegular && hasIrregular 
+      ? (regularGWA + irregularGWA) / 2 
+      : hasRegular ? regularGWA : irregularGWA;
+    
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-lg">
-        <p className="mb-2 font-semibold text-gray-900">
-          Study Hours: {label}
+      <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-xl max-w-xs animate-fade-in">
+        <p className="mb-3 font-bold text-gray-900 text-base border-b pb-2">
+          📚 Study Hours: {label}
         </p>
-        <div className="space-y-1">
+        <div className="space-y-2">
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {payload.map((entry: any, index: number) => (
-            <div key={index} className="flex items-center justify-between">
-              <span
-                className="mr-3 inline-block h-3 w-3 rounded-full"
-                style={{ backgroundColor: entry.color }}
-              />
-              <span className="text-sm text-gray-700">{entry.name}:</span>
-              <span className="ml-2 font-medium text-gray-900">
+            <div key={index} className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span
+                  className="inline-block h-3 w-3 rounded-full"
+                  style={{ backgroundColor: entry.color }}
+                />
+                <span className="text-sm font-medium text-gray-700">{entry.name}:</span>
+              </div>
+              <span className="font-bold text-gray-900">
                 {(entry.value as number).toFixed(2)}
               </span>
             </div>
           ))}
         </div>
-        <div className="mt-2 border-t border-gray-200 pt-2 text-xs text-gray-600">
-          Gap: {Math.abs((payload[0].value as number) - (payload[1].value as number)).toFixed(2)}
+        {hasRegular && hasIrregular && (
+          <div className="mt-3 border-t border-gray-200 pt-3 space-y-1">
+            <div className="flex justify-between text-xs">
+              <span className="text-gray-600">Performance Gap:</span>
+              <span className="font-bold text-gray-900">{gap.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="text-gray-600">Average GWA:</span>
+              <span className="font-semibold text-gray-700">{avgGWA.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="text-gray-600">Better Performance:</span>
+              <span className={regularGWA < irregularGWA ? 'text-regular-600 font-semibold' : 'text-irregular-600 font-semibold'}>
+                {regularGWA < irregularGWA ? 'Regular' : 'Irregular'}
+              </span>
+            </div>
+          </div>
+        )}
+        <div className="mt-3 pt-3 border-t border-gray-200">
+          <p className="text-xs text-gray-500 italic">💡 Lower GWA = Better performance</p>
         </div>
       </div>
     );
@@ -67,6 +100,7 @@ function CustomTooltip({ active, payload, label }: any) {
 export function StudyHoursLineChart({
   data,
   correlationCoefficient = -0.68,
+  statusFilter = 'all',
   className,
 }: StudyHoursLineChartProps) {
 
@@ -76,6 +110,9 @@ export function StudyHoursLineChart({
     if (abs >= 0.4) return 'Moderate';
     return 'Weak';
   };
+
+  const showRegular = statusFilter !== 'irregular';
+  const showIrregular = statusFilter !== 'regular';
 
   return (
     <div className={className}>
@@ -126,26 +163,30 @@ export function StudyHoursLineChart({
               style: { fontSize: 10, fill: '#666' },
             }}
           />
-          <Line
-            type="monotone"
-            dataKey="regularGWA"
-            stroke={COLORS.REGULAR}
-            strokeWidth={3}
-            dot={{ r: 5 }}
-            activeDot={{ r: 7 }}
-            animationDuration={800}
-            name="regularGWA"
-          />
-          <Line
-            type="monotone"
-            dataKey="irregularGWA"
-            stroke={COLORS.IRREGULAR}
-            strokeWidth={3}
-            dot={{ r: 5 }}
-            activeDot={{ r: 7 }}
-            animationDuration={800}
-            name="irregularGWA"
-          />
+          {showRegular && (
+            <Line
+              type="monotone"
+              dataKey="regularGWA"
+              stroke={COLORS.REGULAR}
+              strokeWidth={3}
+              dot={{ r: 5 }}
+              activeDot={{ r: 7 }}
+              animationDuration={800}
+              name="regularGWA"
+            />
+          )}
+          {showIrregular && (
+            <Line
+              type="monotone"
+              dataKey="irregularGWA"
+              stroke={COLORS.IRREGULAR}
+              strokeWidth={3}
+              dot={{ r: 5 }}
+              activeDot={{ r: 7 }}
+              animationDuration={800}
+              name="irregularGWA"
+            />
+          )}
         </LineChart>
       </ResponsiveContainer>
 

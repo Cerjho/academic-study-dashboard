@@ -8,3 +8,4 @@ export { Card, CardHeader, CardTitle, CardContent } from './Card';
 export { Badge } from './Badge';
 export { Button } from './Button';
 export { SectionWrapper } from './SectionWrapper';
+export { DrillDownModal, DrillDownSection, DrillDownStat } from './DrillDownModal';
