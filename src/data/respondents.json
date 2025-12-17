@@ -4,20 +4,20 @@
     "institution": "Mabini College",
     "program": "Computer Science",
     "academicYear": "2024-2025",
-    "totalRespondents": 72,
+    "totalRespondents": 73,
     "dataCollectionDate": "2025-12-04"
   },
   "enrollmentDistribution": [
     {
       "status": "Regular",
-      "count": 54,
-      "percentage": 75.00,
+      "count": 55,
+      "percentage": 75.34,
       "color": "#3B82F6"
     },
     {
       "status": "Irregular",
       "count": 18,
-      "percentage": 25.00,
+      "percentage": 24.66,
       "color": "#EF4444"
     }
   ]

@@ -11,3 +11,4 @@ export { SectionWrapper } from './SectionWrapper';
 export { DrillDownModal, DrillDownSection, DrillDownStat } from './DrillDownModal';
 export { GWAScaleTooltip } from './GWAScaleTooltip';
 export { SignificanceMarker, SignificanceLegend } from './SignificanceMarker';
+export { InfoTooltip, InsightBadge } from './InfoTooltip';

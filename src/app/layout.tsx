@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FilterProvider } from '@/contexts/FilterContext';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -44,21 +45,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="flex min-h-screen flex-col antialiased">
-        {/* Skip to main content link for accessibility */}
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
+        <FilterProvider>
+          {/* Skip to main content link for accessibility */}
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
 
-        {/* Header with navigation */}
-        <Header />
+          {/* Header with navigation */}
+          <Header />
 
-        {/* Main content area */}
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
+          {/* Main content area */}
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </FilterProvider>
       </body>
     </html>
   );

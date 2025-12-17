@@ -1,17 +1,19 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui';
 import { KPICard } from '@/components/dashboard';
-import { getRespondentData } from '@/data';
+import { useRespondentCounts } from '@/hooks/useRespondentData';
 
 /**
- * Home Page - Landing Page
+ * Home Page - Landing Page (Dynamic Data Visualization)
  *
- * Displays the study overview, key metrics, and call-to-action
- * to explore the full dashboard.
+ * Displays live study overview with real-time KPI calculations
+ * from realRespondents.json based on current filter state.
  */
 
 export default function Home() {
-  const respondentData = getRespondentData();
+  const counts = useRespondentCounts();
 
   return (
     <div className="min-h-screen">
@@ -25,25 +27,24 @@ export default function Home() {
         <div className="max-w-5xl text-center animate-fade-in relative z-10">
           <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-regular-200">
             <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-sm font-semibold text-gray-700">Live Research Dashboard</span>
+            <span className="text-sm font-semibold text-gray-700">Live Data Dashboard</span>
           </div>
           
           <h1 className="mb-8 text-4xl font-extrabold bg-gradient-to-r from-gray-900 via-regular-600 to-blue-600 bg-clip-text text-transparent md:text-6xl lg:text-7xl leading-tight">
-            {respondentData.studyMetadata.title}
+            Student Performance Data Visualization
           </h1>
 
           <p className="mb-12 text-lg text-gray-700 md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Interactive data presentation for the study examining the relationship between enrollment
-            status and academic performance in the{' '}
-            <span className="font-semibold text-regular-600">{respondentData.studyMetadata.program}</span> at{' '}
-            <span className="font-semibold text-regular-600">{respondentData.studyMetadata.institution}</span>
+            Explore academic performance data across enrollment status, GWA distributions, and study patterns for{' '}
+            <span className="font-semibold text-regular-600">Computer Science students</span> at{' '}
+            <span className="font-semibold text-regular-600">Mabini College</span>
           </p>
 
-          {/* KPI Cards */}
+          {/* Dynamic KPI Cards */}
           <div className="mb-16 grid gap-6 sm:grid-cols-3">
             <KPICard
               label="Total Respondents"
-              value={respondentData.studyMetadata.totalRespondents}
+              value={counts.total}
               color="neutral"
               icon={
                 <svg
@@ -61,28 +62,29 @@ export default function Home() {
                 </svg>
               }
             />
-            {respondentData.enrollmentDistribution.map((enrollment) => (
-              <KPICard
-                key={enrollment.status}
-                label={`${enrollment.status} Students`}
-                value={enrollment.count}
-                subtitle={`(${enrollment.percentage}%)`}
-                color={
-                  enrollment.status === 'Regular' ? 'regular' : 'irregular'
-                }
-              />
-            ))}
+            <KPICard
+              label="Regular Students"
+              value={counts.regular}
+              subtitle={`(${counts.regularPercentage.toFixed(1)}%)`}
+              color="regular"
+            />
+            <KPICard
+              label="Irregular Students"
+              value={counts.irregular}
+              subtitle={`(${counts.irregularPercentage.toFixed(1)}%)`}
+              color="irregular"
+            />
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/dashboard">
               <Button size="lg" className="rounded-full px-10 py-6 text-lg shadow-2xl bg-gradient-to-r from-regular-600 to-blue-600 hover:from-regular-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300">
-                Explore Findings →
+                Explore Data →
               </Button>
             </Link>
             <Link href="/insights">
               <Button size="lg" variant="outline" className="rounded-full px-10 py-6 text-lg border-2 border-regular-600 text-regular-600 hover:bg-regular-50 transform hover:scale-105 transition-all duration-300">
-                View Insights
+                Data Insights
               </Button>
             </Link>
           </div>
@@ -94,10 +96,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="mb-4 text-4xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-              Study Highlights
+              Available Visualizations
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Comprehensive analysis of academic performance and enrollment patterns
+              Interactive charts and data analysis tools
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
@@ -166,17 +168,16 @@ export default function Home() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
                 </div>
               </div>
               <h3 className="mb-3 text-2xl font-bold text-gray-900">
-                Research Ethics
+                Enrollment Patterns
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Ethical research standards with full data privacy and voluntary
-                anonymous participation
+                Visualize student distribution across regular and irregular enrollment status
               </p>
             </div>
           </div>

@@ -13,11 +13,17 @@ import { useState } from 'react';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Insights', href: '/insights' },
-  { name: 'Ethics', href: '/ethics' },
-  { name: 'Literature', href: '/literature' },
-  { name: 'About', href: '/about' },
+  { 
+    name: 'Visualizations', 
+    href: '/dashboard',
+    subMenu: [
+      { name: 'Overview', href: '/dashboard' },
+      { name: 'Enrollment', href: '/dashboard/enrollment' },
+      { name: 'GWA Analysis', href: '/dashboard/gwa' },
+      { name: 'Performance', href: '/dashboard/performance' },
+    ]
+  },
+  { name: 'Data Insights', href: '/insights' },
 ];
 
 export function Header() {
@@ -95,7 +101,46 @@ export function Header() {
         {/* Desktop navigation */}
         <div className="hidden lg:flex lg:gap-x-8">
           {navigation.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = pathname === item.href || (item.subMenu && item.subMenu.some(sub => pathname === sub.href));
+            
+            if (item.subMenu) {
+              return (
+                <div key={item.name} className="relative group">
+                  <Link
+                    href={item.href}
+                    className={`text-sm font-semibold transition-colors flex items-center gap-1 ${
+                      isActive
+                        ? 'text-regular-600 border-b-2 border-regular-600'
+                        : 'text-gray-700 hover:text-regular-600'
+                    }`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {item.name}
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </Link>
+                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                    {item.subMenu.map((subItem, idx) => (
+                      <Link
+                        key={subItem.href}
+                        href={subItem.href}
+                        className={`block px-4 py-3 text-sm hover:bg-gray-50 ${
+                          idx === 0 ? 'rounded-t-lg' : ''
+                        } ${
+                          idx === item.subMenu!.length - 1 ? 'rounded-b-lg' : ''
+                        } ${
+                          pathname === subItem.href ? 'bg-regular-50 text-regular-600 font-semibold' : 'text-gray-700'
+                        }`}
+                      >
+                        {subItem.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            
             return (
               <Link
                 key={item.name}
@@ -171,19 +216,38 @@ export function Header() {
                     {navigation.map((item) => {
                       const isActive = pathname === item.href;
                       return (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors ${
-                            isActive
-                              ? 'bg-regular-50 text-regular-600'
-                              : 'text-gray-900 hover:bg-gray-50'
-                          }`}
-                          onClick={() => setMobileMenuOpen(false)}
-                          aria-current={isActive ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </Link>
+                        <div key={item.name}>
+                          <Link
+                            href={item.href}
+                            className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors ${
+                              isActive
+                                ? 'bg-regular-50 text-regular-600'
+                                : 'text-gray-900 hover:bg-gray-50'
+                            }`}
+                            onClick={() => setMobileMenuOpen(false)}
+                            aria-current={isActive ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </Link>
+                          {item.subMenu && (
+                            <div className="ml-4 mt-2 space-y-2">
+                              {item.subMenu.map((subItem) => (
+                                <Link
+                                  key={subItem.href}
+                                  href={subItem.href}
+                                  className={`-mx-3 block rounded-lg px-3 py-2 text-sm leading-7 transition-colors ${
+                                    pathname === subItem.href
+                                      ? 'bg-regular-50 text-regular-600 font-semibold'
+                                      : 'text-gray-600 hover:bg-gray-50'
+                                  }`}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
