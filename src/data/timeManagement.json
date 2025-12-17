@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "level": "Excellent",
+      "regular": {
+        "count": 13,
+        "avgGWA": 1.33,
+        "percentage": 23.64
+      },
+      "irregular": {
+        "count": 1,
+        "avgGWA": 1.75,
+        "percentage": 5.56
+      }
+    },
+    {
+      "level": "Good",
+      "regular": {
+        "count": 29,
+        "avgGWA": 1.92,
+        "percentage": 52.73
+      },
+      "irregular": {
+        "count": 3,
+        "avgGWA": 1.92,
+        "percentage": 16.67
+      }
+    },
+    {
+      "level": "Fair",
+      "regular": {
+        "count": 11,
+        "avgGWA": 2.3,
+        "percentage": 20
+      },
+      "irregular": {
+        "count": 7,
+        "avgGWA": 2.61,
+        "percentage": 38.89
+      }
+    },
+    {
+      "level": "Poor",
+      "regular": {
+        "count": 2,
+        "avgGWA": 2,
+        "percentage": 3.64
+      },
+      "irregular": {
+        "count": 7,
+        "avgGWA": 2.75,
+        "percentage": 38.89
+      }
+    }
+  ]
+}

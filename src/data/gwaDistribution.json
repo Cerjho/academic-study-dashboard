@@ -14,7 +14,7 @@
     },
     {
       "range": "1.50-1.99",
-      "label": "Very Good",
+      "label": "Above Average",
       "regular": {
         "count": 20,
         "percentage": 36.36
@@ -26,7 +26,7 @@
     },
     {
       "range": "2.00-2.49",
-      "label": "Good",
+      "label": "Satisfactory",
       "regular": {
         "count": 22,
         "percentage": 40
@@ -38,7 +38,7 @@
     },
     {
       "range": "2.50-2.99",
-      "label": "Satisfactory",
+      "label": "Fair",
       "regular": {
         "count": 1,
         "percentage": 1.82

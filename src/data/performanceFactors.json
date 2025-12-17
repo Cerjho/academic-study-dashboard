@@ -1,0 +1,68 @@
+{
+  "factors": [
+    {
+      "factor": "Lack of study time",
+      "regular": 35,
+      "irregular": 17,
+      "total": 52,
+      "regularPercentage": 63.64,
+      "irregularPercentage": 94.44
+    },
+    {
+      "factor": "Heavy class load",
+      "regular": 21,
+      "irregular": 8,
+      "total": 29,
+      "regularPercentage": 38.18,
+      "irregularPercentage": 44.44
+    },
+    {
+      "factor": "Motivation level",
+      "regular": 21,
+      "irregular": 4,
+      "total": 25,
+      "regularPercentage": 38.18,
+      "irregularPercentage": 22.22
+    },
+    {
+      "factor": "Attendance issues",
+      "regular": 20,
+      "irregular": 2,
+      "total": 22,
+      "regularPercentage": 36.36,
+      "irregularPercentage": 11.11
+    },
+    {
+      "factor": "Personal/family concerns",
+      "regular": 11,
+      "irregular": 8,
+      "total": 19,
+      "regularPercentage": 20,
+      "irregularPercentage": 44.44
+    },
+    {
+      "factor": "Financial concerns",
+      "regular": 17,
+      "irregular": 0,
+      "total": 17,
+      "regularPercentage": 30.91,
+      "irregularPercentage": 0
+    },
+    {
+      "factor": "Difficulty understanding lessons",
+      "regular": 9,
+      "irregular": 4,
+      "total": 13,
+      "regularPercentage": 16.36,
+      "irregularPercentage": 22.22
+    },
+    {
+      "factor": "Quake",
+      "regular": 1,
+      "irregular": 0,
+      "total": 1,
+      "regularPercentage": 1.82,
+      "irregularPercentage": 0
+    }
+  ]
+}

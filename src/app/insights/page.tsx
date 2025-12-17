@@ -10,12 +10,6 @@ import {
   generateEnrollmentFinding,
   generateGWAFinding,
   generateStudyHabitsFinding,
-  generateAcademicSupportImplication,
-  generateStudyEfficiencyImplication,
-  generateIrregularSupportRecommendation,
-  generateStudySkillsRecommendation,
-  generateEarlyInterventionRecommendation,
-  generateCurriculumRecommendation,
   calculatePerformanceGap,
   determinePriority,
 } from '@/lib/insights';
@@ -23,14 +17,13 @@ import {
 export const metadata: Metadata = {
   title: 'Insights & Interpretation - Academic Study',
   description:
-    'Key findings, implications, and recommendations from the enrollment status impact study',
+    'Key findings from the enrollment status impact study',
 };
 
 /**
  * Insights Page
  *
- * Comprehensive display of research findings, implications,
- * and evidence-based recommendations.
+ * Comprehensive display of research findings.
  */
 
 export default function InsightsPage() {
@@ -74,34 +67,32 @@ export default function InsightsPage() {
     studyHabitsData.correlationCoefficient
   );
 
-  const supportImplication = generateAcademicSupportImplication(
-    performanceGap.gap
-  );
-
-  const efficiencyImplication = generateStudyEfficiencyImplication();
-
-  const irregularSupportRec = generateIrregularSupportRecommendation();
-  const studySkillsRec = generateStudySkillsRecommendation();
-  const earlyInterventionRec = generateEarlyInterventionRecommendation();
-  const curriculumRec = generateCurriculumRecommendation();
-
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 px-4 py-12">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
-        <header className="mb-8 animate-fade-in">
-          <h1 className="mb-2 text-4xl font-bold text-gray-900">
-            Insights & Interpretation
-          </h1>
-          <p className="text-lg text-gray-600">
-            Analysis of findings and actionable recommendations
-          </p>
-          <div className="mt-4 flex items-center gap-2">
-            <Badge variant="regular">
+        <header className="mb-12 animate-fade-in">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg">
+              <svg className="h-9 w-9 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                Insights & Interpretation
+              </h1>
+              <p className="text-xl text-gray-600 mt-2">
+                Analysis of findings from the academic study
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <Badge variant="regular" className="px-4 py-2 text-sm font-semibold shadow-md">
               {respondentData.studyMetadata.academicYear}
             </Badge>
-            <Badge variant="default">n={totalStudents}</Badge>
-            <Badge variant="default">
+            <Badge variant="default" className="px-4 py-2 text-sm font-semibold shadow-md">n={totalStudents}</Badge>
+            <Badge variant="default" className="px-4 py-2 text-sm font-semibold shadow-md">
               Gap: {Math.abs(performanceGap.gap).toFixed(2)} GWA points
             </Badge>
           </div>
@@ -112,31 +103,33 @@ export default function InsightsPage() {
           <SectionWrapper
             id="summary"
             title="Executive Summary"
-            description="Overview of the most critical findings and recommendations"
+            description="Overview of the most critical findings"
           >
-            <div className="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
-              <p className="mb-4 text-gray-700 leading-relaxed">
-                This study examined the impact of enrollment status on academic
-                achievement among {totalStudents} Computer Science students at
-                Mabini College. The analysis revealed a{' '}
-                <strong className="text-gray-900">
-                  {Math.abs(performanceGap.gap).toFixed(2)} GWA point
-                  performance gap
-                </strong>{' '}
-                between Regular and Irregular students, alongside a{' '}
-                <strong className="text-gray-900">
-                  strong negative correlation (r ={' '}
-                  {studyHabitsData.correlationCoefficient})
-                </strong>{' '}
-                between study hours and academic performance.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                These findings underscore the need for targeted interventions,
-                including specialized support programs for Irregular students
-                and institution-wide emphasis on study quality over quantity.
-                The recommendations provided are evidence-based and actionable,
-                designed to improve educational outcomes for all students.
-              </p>
+            <div className="rounded-xl bg-gradient-to-br from-white to-blue-50 p-8 shadow-xl border border-blue-200">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500 shadow-md flex-shrink-0">
+                  <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <p className="text-gray-800 leading-relaxed text-lg">
+                    This study examined the impact of enrollment status on academic
+                    achievement among {totalStudents} Computer Science students at
+                    Mabini College. The analysis revealed a{' '}
+                    <strong className="text-gray-900">
+                      {Math.abs(performanceGap.gap).toFixed(2)} GWA point
+                      performance gap
+                    </strong>{' '}
+                    between Regular and Irregular students, alongside a{' '}
+                    <strong className="text-gray-900">
+                      strong negative correlation (r ={' '}
+                      {studyHabitsData.correlationCoefficient})
+                    </strong>{' '}
+                    between study hours and academic performance.
+                  </p>
+                </div>
+              </div>
             </div>
           </SectionWrapper>
 
@@ -168,163 +161,44 @@ export default function InsightsPage() {
             </InsightPanel>
           </SectionWrapper>
 
-          {/* Implications */}
-          <SectionWrapper
-            id="implications"
-            title="Implications for Educational Practice"
-            description="What these findings mean for institutions and students"
-          >
-            <InsightPanel>
-              <InsightCard
-                title="Targeted Academic Support is Critical"
-                content={supportImplication}
-                type="implication"
-                priority={determinePriority(performanceGap.gap)}
-              />
-              <InsightCard
-                title="Study Effectiveness Matters More Than Duration"
-                content={efficiencyImplication}
-                type="implication"
-                priority="high"
-              />
-            </InsightPanel>
-          </SectionWrapper>
-
-          {/* Recommendations */}
-          <SectionWrapper
-            id="recommendations"
-            title="Evidence-Based Recommendations"
-            description="Actionable strategies extrapolated from study findings for institutional consideration"
-          >
-            <InsightPanel>
-              <InsightCard
-                title="1. Establish Irregular Student Support Program"
-                content={irregularSupportRec}
-                type="recommendation"
-                priority={determinePriority(performanceGap.gap)}
-              />
-              <InsightCard
-                title="2. Implement Study Skills Development Initiative"
-                content={studySkillsRec}
-                type="recommendation"
-                priority="high"
-              />
-              <InsightCard
-                title="3. Deploy Early Warning and Intervention System"
-                content={earlyInterventionRec}
-                type="recommendation"
-                priority="high"
-              />
-              <InsightCard
-                title="4. Conduct Comprehensive Curriculum Review"
-                content={curriculumRec}
-                type="recommendation"
-                priority="medium"
-              />
-            </InsightPanel>
-          </SectionWrapper>
-
           {/* Limitations */}
           <SectionWrapper
             id="limitations"
             title="Study Limitations"
-            description="Considerations for interpretation and future research"
+            description="Considerations for interpretation"
           >
-            <div className="rounded-lg bg-gray-100 p-6 border border-gray-300">
-              <ul className="space-y-3 text-gray-700">
+            <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 p-8 shadow-lg border border-amber-200">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500 shadow-md">
+                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-amber-900">Important Considerations</h3>
+              </div>
+              <ul className="space-y-4 text-gray-800">
                 <li className="flex items-start">
                   <span className="mr-2 text-gray-500">•</span>
                   <span>
                     <strong>Sample Size:</strong> The study is limited to 73
-                    students from a single institution, which may affect
-                    generalizability to other contexts.
+                    students from a single institution.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-gray-500">•</span>
                   <span>
                     <strong>Cross-Sectional Design:</strong> The data
-                    represents a snapshot in time and cannot establish causal
-                    relationships between enrollment status and academic
-                    performance.
+                    represents a snapshot in time.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-gray-500">•</span>
                   <span>
                     <strong>Self-Reported Data:</strong> Study hours are
-                    self-reported and may be subject to recall bias or social
-                    desirability effects.
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2 text-gray-500">•</span>
-                  <span>
-                    <strong>Confounding Variables:</strong> Other factors such
-                    as socioeconomic status, employment, family obligations, and
-                    prior academic preparation were not controlled for in this
-                    analysis.
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2 text-gray-500">•</span>
-                  <span>
-                    <strong>Program-Specific:</strong> Results are specific to
-                    Computer Science students and may not generalize to other
-                    academic programs.
+                    self-reported.
                   </span>
                 </li>
               </ul>
-            </div>
-          </SectionWrapper>
-
-          {/* Future Research */}
-          <SectionWrapper
-            id="future-research"
-            title="Future Research Directions"
-            description="Suggested areas for further investigation"
-          >
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg bg-white p-5 shadow-sm border border-gray-200">
-                <h4 className="mb-2 font-semibold text-gray-900">
-                  Longitudinal Studies
-                </h4>
-                <p className="text-sm text-gray-600">
-                  Track students over multiple semesters to examine how
-                  enrollment status changes affect academic trajectories and
-                  identify critical intervention points.
-                </p>
-              </div>
-              <div className="rounded-lg bg-white p-5 shadow-sm border border-gray-200">
-                <h4 className="mb-2 font-semibold text-gray-900">
-                  Qualitative Investigation
-                </h4>
-                <p className="text-sm text-gray-600">
-                  Conduct interviews and focus groups to understand the lived
-                  experiences of Irregular students and identify specific
-                  barriers to academic success.
-                </p>
-              </div>
-              <div className="rounded-lg bg-white p-5 shadow-sm border border-gray-200">
-                <h4 className="mb-2 font-semibold text-gray-900">
-                  Study Quality Assessment
-                </h4>
-                <p className="text-sm text-gray-600">
-                  Develop and validate instruments to measure study quality
-                  (e.g., metacognitive strategies, focus, comprehension) beyond
-                  simple duration metrics.
-                </p>
-              </div>
-              <div className="rounded-lg bg-white p-5 shadow-sm border border-gray-200">
-                <h4 className="mb-2 font-semibold text-gray-900">
-                  Intervention Effectiveness
-                </h4>
-                <p className="text-sm text-gray-600">
-                  Design and evaluate targeted interventions based on these
-                  findings through randomized controlled trials to establish
-                  causal evidence.
-                </p>
-              </div>
             </div>
           </SectionWrapper>
         </div>

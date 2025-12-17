@@ -16,21 +16,31 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center bg-gradient-to-b from-regular-50 to-white px-4 py-16">
-        <div className="max-w-4xl text-center animate-fade-in">
-          <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">
+      <section className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center bg-gradient-to-br from-regular-50 via-blue-50 to-white px-4 py-20 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-regular-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        
+        <div className="max-w-5xl text-center animate-fade-in relative z-10">
+          <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-regular-200">
+            <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span className="text-sm font-semibold text-gray-700">Live Research Dashboard</span>
+          </div>
+          
+          <h1 className="mb-8 text-4xl font-extrabold bg-gradient-to-r from-gray-900 via-regular-600 to-blue-600 bg-clip-text text-transparent md:text-6xl lg:text-7xl leading-tight">
             {respondentData.studyMetadata.title}
           </h1>
 
-          <p className="mb-8 text-lg text-gray-600 md:text-xl">
-            An academic study examining the relationship between enrollment
+          <p className="mb-12 text-lg text-gray-700 md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Interactive data presentation for the study examining the relationship between enrollment
             status and academic performance in the{' '}
-            {respondentData.studyMetadata.program} at{' '}
-            {respondentData.studyMetadata.institution}
+            <span className="font-semibold text-regular-600">{respondentData.studyMetadata.program}</span> at{' '}
+            <span className="font-semibold text-regular-600">{respondentData.studyMetadata.institution}</span>
           </p>
 
           {/* KPI Cards */}
-          <div className="mb-12 grid gap-6 sm:grid-cols-3">
+          <div className="mb-16 grid gap-6 sm:grid-cols-3">
             <KPICard
               label="Total Respondents"
               value={respondentData.studyMetadata.totalRespondents}
@@ -64,26 +74,38 @@ export default function Home() {
             ))}
           </div>
 
-          <Link href="/dashboard">
-            <Button size="lg" className="rounded-full px-8 shadow-lg">
-              Explore Findings →
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/dashboard">
+              <Button size="lg" className="rounded-full px-10 py-6 text-lg shadow-2xl bg-gradient-to-r from-regular-600 to-blue-600 hover:from-regular-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300">
+                Explore Findings →
+              </Button>
+            </Link>
+            <Link href="/insights">
+              <Button size="lg" variant="outline" className="rounded-full px-10 py-6 text-lg border-2 border-regular-600 text-regular-600 hover:bg-regular-50 transform hover:scale-105 transition-all duration-300">
+                View Insights
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Quick Overview Section */}
-      <section className="bg-white py-16 px-4">
+      <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-4">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900">
-            Study Highlights
-          </h2>
+          <div className="text-center mb-16">
+            <h2 className="mb-4 text-4xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Study Highlights
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Comprehensive analysis of academic performance and enrollment patterns
+            </p>
+          </div>
           <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center">
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-regular-100">
+            <div className="group text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-regular-500 to-blue-600 shadow-xl group-hover:scale-110 transition-transform duration-300">
                   <svg
-                    className="h-8 w-8 text-regular-600"
+                    className="h-10 w-10 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -97,19 +119,19 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
+              <h3 className="mb-3 text-2xl font-bold text-gray-900">
                 GWA Analysis
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 leading-relaxed">
                 Compare academic performance across enrollment status with
                 detailed statistical breakdowns
               </p>
             </div>
-            <div className="text-center">
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-irregular-100">
+            <div className="group text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-irregular-500 to-red-600 shadow-xl group-hover:scale-110 transition-transform duration-300">
                   <svg
-                    className="h-8 w-8 text-irregular-600"
+                    className="h-10 w-10 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -123,19 +145,19 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
+              <h3 className="mb-3 text-2xl font-bold text-gray-900">
                 Study Habits
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 leading-relaxed">
                 Explore the correlation between study hours and academic
                 achievement
               </p>
             </div>
-            <div className="text-center">
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+            <div className="group text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-xl group-hover:scale-110 transition-transform duration-300">
                   <svg
-                    className="h-8 w-8 text-green-600"
+                    className="h-10 w-10 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -149,10 +171,10 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
+              <h3 className="mb-3 text-2xl font-bold text-gray-900">
                 Research Ethics
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 leading-relaxed">
                 Ethical research standards with full data privacy and voluntary
                 anonymous participation
               </p>

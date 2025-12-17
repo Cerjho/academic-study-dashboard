@@ -1,0 +1,29 @@
+{
+  "yearLevel": [
+    {
+      "year": "1st Year",
+      "regular": 14,
+      "irregular": 5,
+      "total": 19
+    },
+    {
+      "year": "2nd Year",
+      "regular": 14,
+      "irregular": 4,
+      "total": 18
+    },
+    {
+      "year": "3rd Year",
+      "regular": 13,
+      "irregular": 5,
+      "total": 18
+    },
+    {
+      "year": "4th Year",
+      "regular": 14,
+      "irregular": 4,
+      "total": 18
+    }
+  ],
+  "note": "Year level distribution estimated from sample size. Actual year level data not available in survey responses."
+}

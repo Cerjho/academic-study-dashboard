@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Card, Badge } from '@/components/ui';
+import { Card, Badge, GWAScaleTooltip, SignificanceMarker, SignificanceLegend } from '@/components/ui';
 import { 
   KPICard, 
   InsightCard, 
   FilterBar, 
   StatusToggle, 
-  GWARangeSlider 
+  GWARangeSlider, 
+  YearLevelFilter 
 } from '@/components/dashboard';
 import { SectionWrapper } from '@/components/ui';
 import {
@@ -15,55 +16,75 @@ import {
   EnrollmentPieChart,
   GWAComparisonBarChart,
   StudyHoursLineChart,
+  YearLevelChart,
+  AttendanceComparisonChart,
+  TimeManagementChart,
+  PerformanceFactorsBarChart,
+  StatisticalTestsTable,
+  QualitativeThemesDisplay,
 } from '@/components/charts';
 import {
   generateEnrollmentFinding,
   generateGWAFinding,
   generateStudyHabitsFinding,
-  generateAcademicSupportImplication,
-  generateStudyEfficiencyImplication,
-  generateIrregularSupportRecommendation,
-  generateStudySkillsRecommendation,
-  generateEarlyInterventionRecommendation,
-  generateCurriculumRecommendation,
   calculatePerformanceGap,
   determinePriority,
 } from '@/lib/insights';
 import type { 
   RespondentData, 
   GWADistribution, 
-  StudyHabitsData 
+  StudyHabitsData,
+  DemographicsData,
+  AttendanceData,
+  TimeManagementData,
+  PerformanceFactorsData,
+  StatisticalTestsData,
+  QualitativeThemesData
 } from '@/types';
 
 type StatusOption = 'all' | 'regular' | 'irregular';
-type GWARange = 'excellent' | 'veryGood' | 'good' | 'fair';
+type GWARange = 'excellent' | 'aboveAverage' | 'satisfactory' | 'fair';
+type YearOption = 'all' | '1st' | '2nd' | '3rd' | '4th';
 
 interface DashboardContentProps {
   respondentData: RespondentData;
   gwaData: GWADistribution;
   studyHabitsData: StudyHabitsData;
+  demographicsData: DemographicsData;
+  attendanceData: AttendanceData;
+  timeManagementData: TimeManagementData;
+  performanceFactorsData: PerformanceFactorsData;
+  statisticalTestsData: StatisticalTestsData;
+  qualitativeThemesData: QualitativeThemesData;
 }
 
 export function DashboardContent({
   respondentData,
   gwaData,
   studyHabitsData,
+  demographicsData,
+  attendanceData,
+  timeManagementData,
+  performanceFactorsData,
+  statisticalTestsData,
+  qualitativeThemesData,
 }: DashboardContentProps) {
   // Filter states
   const [statusFilter, setStatusFilter] = useState<StatusOption>('all');
   const [gwaRanges, setGwaRanges] = useState<GWARange[]>([
     'excellent',
-    'veryGood',
-    'good',
+    'aboveAverage',
+    'satisfactory',
     'fair',
   ]);
+  const [yearFilter, setYearFilter] = useState<YearOption>('all');
 
   // Filter data based on selections
   const filteredData = useMemo(() => {
     const rangeMap: Record<GWARange, string> = {
       excellent: '1.00-1.49',
-      veryGood: '1.50-1.99',
-      good: '2.00-2.49',
+      aboveAverage: '1.50-1.99',
+      satisfactory: '2.00-2.49',
       fair: '2.50-2.99',
     };
 
@@ -152,27 +173,76 @@ export function DashboardContent({
     regularStats.mean,
     irregularStats.mean,
     regularStats.median,
-    irregularStats.median
+    irregularStats.median,
+    statisticalTestsData.gwaComparison.tStatistic,
+    statisticalTestsData.gwaComparison.pValue,
+    statisticalTestsData.gwaComparison.cohensD
   );
 
   const studyHabitsFinding = generateStudyHabitsFinding(
-    studyHabitsData.correlationCoefficient
+    studyHabitsData.correlationCoefficient,
+    statisticalTestsData.correlations.studyHoursVsGWA.pValue,
+    statisticalTestsData.correlations.studyHoursVsGWA.n
   );
 
-  const supportImplication = generateAcademicSupportImplication(
-    performanceGap.gap
-  );
+  // Status-aware filtered datasets for downstream charts
+  const filteredAttendanceData = useMemo(() => {
+    if (statusFilter === 'all') return attendanceData;
+    return {
+      categories: attendanceData.categories.map((cat) => ({
+        attendance: cat.attendance,
+        regular: {
+          ...cat.regular,
+          count: statusFilter === 'irregular' ? 0 : cat.regular.count,
+          avgGWA: statusFilter === 'irregular' ? null : cat.regular.avgGWA,
+        },
+        irregular: {
+          ...cat.irregular,
+          count: statusFilter === 'regular' ? 0 : cat.irregular.count,
+          avgGWA: statusFilter === 'regular' ? null : cat.irregular.avgGWA,
+        },
+      })),
+    } as AttendanceData;
+  }, [attendanceData, statusFilter]);
 
-  const efficiencyImplication = generateStudyEfficiencyImplication();
+  const filteredTimeManagementData = useMemo(() => {
+    if (statusFilter === 'all') return timeManagementData;
+    return {
+      categories: timeManagementData.categories.map((cat) => ({
+        level: cat.level,
+        regular: {
+          ...cat.regular,
+          count: statusFilter === 'irregular' ? 0 : cat.regular.count,
+          avgGWA: statusFilter === 'irregular' ? null : cat.regular.avgGWA,
+          percentage: cat.regular.percentage,
+        },
+        irregular: {
+          ...cat.irregular,
+          count: statusFilter === 'regular' ? 0 : cat.irregular.count,
+          avgGWA: statusFilter === 'regular' ? null : cat.irregular.avgGWA,
+          percentage: cat.irregular.percentage,
+        },
+      })),
+    } as TimeManagementData;
+  }, [timeManagementData, statusFilter]);
 
-  const irregularSupportRec = generateIrregularSupportRecommendation();
-  const studySkillsRec = generateStudySkillsRecommendation();
-  const earlyInterventionRec = generateEarlyInterventionRecommendation();
-  const curriculumRec = generateCurriculumRecommendation();
+  const filteredPerformanceFactorsData = useMemo(() => {
+    if (statusFilter === 'all') return performanceFactorsData;
+    return {
+      factors: performanceFactorsData.factors.map((f) => ({
+        ...f,
+        regular: statusFilter === 'irregular' ? 0 : f.regular,
+        irregular: statusFilter === 'regular' ? 0 : f.irregular,
+        // Leave percentages as-is to reflect within-group prevalence
+        regularPercentage: statusFilter === 'irregular' ? 0 : f.regularPercentage,
+        irregularPercentage: statusFilter === 'regular' ? 0 : f.irregularPercentage,
+      })),
+    } as PerformanceFactorsData;
+  }, [performanceFactorsData, statusFilter]);
 
   const handleResetFilters = () => {
     setStatusFilter('all');
-    setGwaRanges(['excellent', 'veryGood', 'good', 'fair']);
+    setGwaRanges(['excellent', 'aboveAverage', 'satisfactory', 'fair']);
   };
 
   const hasActiveFilters =
@@ -182,13 +252,21 @@ export function DashboardContent({
     <div className="min-h-screen bg-gray-50 px-4 py-8">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8 animate-fade-in">
-          <h1 className="mb-2 text-4xl font-bold text-gray-900">
-            Academic Performance Dashboard
-          </h1>
-          <p className="text-lg text-gray-600">
-            {respondentData.studyMetadata.institution} —{' '}
-            {respondentData.studyMetadata.program}
-          </p>
+          <div className="flex items-start justify-between">
+            <div>
+              <h1 className="mb-2 text-4xl font-bold text-gray-900">
+                Academic Performance Dashboard
+              </h1>
+              <p className="text-lg text-gray-600">
+                {respondentData.studyMetadata.institution} —{' '}
+                {respondentData.studyMetadata.program}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600">About GWA:</span>
+              <GWAScaleTooltip />
+            </div>
+          </div>
           <div className="mt-2 flex items-center gap-2">
             <Badge variant="regular">
               {respondentData.studyMetadata.academicYear}
@@ -212,7 +290,7 @@ export function DashboardContent({
             description="Customize the view by enrollment status and GWA performance level"
             showReset={hasActiveFilters}
           >
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-3">
               <StatusToggle
                 value={statusFilter}
                 onChange={setStatusFilter}
@@ -220,6 +298,10 @@ export function DashboardContent({
               <GWARangeSlider
                 value={gwaRanges}
                 onChange={setGwaRanges}
+              />
+              <YearLevelFilter
+                value={yearFilter}
+                onChange={setYearFilter}
               />
             </div>
           </FilterBar>
@@ -286,8 +368,16 @@ export function DashboardContent({
 
           <SectionWrapper
             id="gwa"
-            title="GWA Comparison"
-            description="Statistical analysis of academic performance by enrollment status"
+            title={
+              <span className="flex items-center gap-2">
+                GWA Comparison
+                <SignificanceMarker 
+                  pValue={statisticalTestsData.gwaComparison.pValue} 
+                  position="inline"
+                />
+              </span>
+            }
+            description={`Statistical analysis of academic performance by enrollment status (t = ${statisticalTestsData.gwaComparison.tStatistic.toFixed(2)}, Cohen's d = ${statisticalTestsData.gwaComparison.cohensD.toFixed(2)})`}
             className="transition-all duration-500"
           >
             <div className="grid gap-6 md:grid-cols-2 mb-6">
@@ -373,20 +463,37 @@ export function DashboardContent({
               description="Comparison of academic performance across all GWA categories"
             >
               <GWAComparisonBarChart
-                data={filteredData.categories.map((category) => ({
-                  category: category.label,
-                  range: category.range,
-                  regular: category.regular.count,
-                  irregular: category.irregular.count,
+                data={filteredData.categories.map((cat) => ({
+                  category: cat.label,
+                  range: cat.range,
+                  regular: cat.regular.count,
+                  irregular: cat.irregular.count,
                 }))}
               />
             </ChartContainer>
+            
+            {/* Statistical Significance Note */}
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-sm text-blue-900">
+                <strong>Statistical Test:</strong> Independent samples t-test shows a highly significant difference 
+                (t({statisticalTestsData.gwaComparison.df}) = {statisticalTestsData.gwaComparison.tStatistic.toFixed(3)}, 
+                p &lt; 0.001) with a large effect size (Cohen&apos;s d = {statisticalTestsData.gwaComparison.cohensD.toFixed(2)}).
+              </p>
+            </div>
           </SectionWrapper>
 
           <SectionWrapper
             id="study-habits"
-            title="Study Habits Analysis"
-            description={`Correlation between study hours and academic performance (r = ${studyHabitsData.correlationCoefficient})`}
+            title={
+              <span className="flex items-center gap-2">
+                Study Habits Analysis
+                <SignificanceMarker 
+                  pValue={statisticalTestsData.correlations.studyHoursVsGWA.pValue} 
+                  position="inline"
+                />
+              </span>
+            }
+            description={`Correlation between study hours and academic performance (r = ${studyHabitsData.correlationCoefficient.toFixed(3)})`}
             className="transition-all duration-500"
           >
             <ChartContainer
@@ -403,6 +510,19 @@ export function DashboardContent({
                 statusFilter={statusFilter}
               />
             </ChartContainer>
+            
+            {/* Correlation Significance Note */}
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-sm text-blue-900">
+                <strong>Statistical Test:</strong> Pearson correlation analysis reveals a significant 
+                moderate negative correlation (r = {statisticalTestsData.correlations.studyHoursVsGWA.r.toFixed(3)}, 
+                p &lt; 0.001, n = {statisticalTestsData.correlations.studyHoursVsGWA.n}). 
+                Lower GWA values indicate better performance in the Philippine system.
+              </p>
+            </div>
+            
+            {/* Significance Legend */}
+            <SignificanceLegend className="mt-4 p-4 bg-gray-50 rounded-lg" />
           </SectionWrapper>
 
           {/* Key Findings */}
@@ -434,62 +554,127 @@ export function DashboardContent({
             </div>
           </SectionWrapper>
 
-          {/* Implications */}
+          {/* Statistical Significance */}
           <SectionWrapper
-            id="implications"
-            title="Implications"
-            description="Educational and policy implications of the research findings"
+            id="statistical-tests"
+            title="Statistical Significance Tests"
+            description="Inferential statistics demonstrating the robustness of observed differences"
             className="transition-all duration-500"
           >
-            <div className="grid gap-6 md:grid-cols-2">
-              <InsightCard
-                title="Need for Targeted Academic Support"
-                content={supportImplication}
-                type="implication"
-                priority={determinePriority(performanceGap.gap)}
-              />
-              <InsightCard
-                title="Study Quality Over Quantity"
-                content={efficiencyImplication}
-                type="implication"
-                priority="high"
-              />
+            <StatisticalTestsTable data={statisticalTestsData} />
+          </SectionWrapper>
+
+          {/* Demographics */}
+          <SectionWrapper
+            id="demographics"
+            title="Year Level Distribution"
+            description="Distribution of students across academic year levels"
+            className="transition-all duration-500"
+          >
+            <ChartContainer
+              title="Students by Year Level"
+              description="Breakdown of Regular and Irregular students across year levels"
+            >
+              <YearLevelChart data={
+                yearFilter === 'all'
+                  ? demographicsData
+                  : {
+                      yearLevel: demographicsData.yearLevel.filter((y) => y.year.startsWith(yearFilter))
+                    }
+              } />
+            </ChartContainer>
+            {(demographicsData.note || yearFilter !== 'all') && (
+              <div className="mt-4 text-sm text-gray-600 italic p-4 bg-gray-50 rounded-lg">
+                <strong>Note:</strong> {yearFilter !== 'all' ? 'Year-level data is estimated; use cautiously. ' : ''}{demographicsData.note ?? ''}
+              </div>
+            )}
+          </SectionWrapper>
+
+          {/* Attendance Patterns */}
+          <SectionWrapper
+            id="attendance"
+            title="Attendance Patterns Analysis"
+            description="Relationship between class attendance and academic performance"
+            className="transition-all duration-500"
+          >
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ChartContainer
+                title="Average GWA by Attendance Frequency"
+                description="How attendance patterns correlate with academic achievement"
+              >
+                <AttendanceComparisonChart data={filteredAttendanceData} metric="avgGWA" />
+              </ChartContainer>
+              <ChartContainer
+                title="Student Count by Attendance Frequency"
+                description="Distribution of attendance patterns across enrollment status"
+              >
+                <AttendanceComparisonChart data={filteredAttendanceData} metric="count" />
+              </ChartContainer>
             </div>
           </SectionWrapper>
 
-          {/* Recommendations */}
+          {/* Time Management */}
           <SectionWrapper
-            id="recommendations"
-            title="Recommendations"
-            description="Evidence-based recommendations extrapolated from study findings for institutional consideration"
+            id="time-management"
+            title="Time Management Skills"
+            description="Self-reported time management abilities and their impact on GWA"
             className="transition-all duration-500"
           >
-            <div className="grid gap-6 md:grid-cols-2">
-              <InsightCard
-                title="Irregular Student Support Program"
-                content={irregularSupportRec}
-                type="recommendation"
-                priority={determinePriority(performanceGap.gap)}
-              />
-              <InsightCard
-                title="Study Skills Development Initiative"
-                content={studySkillsRec}
-                type="recommendation"
-                priority="high"
-              />
-              <InsightCard
-                title="Early Warning and Intervention System"
-                content={earlyInterventionRec}
-                type="recommendation"
-                priority="high"
-              />
-              <InsightCard
-                title="Curriculum and Pathway Review"
-                content={curriculumRec}
-                type="recommendation"
-                priority="medium"
-              />
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ChartContainer
+                title="Average GWA by Time Management Level"
+                description="Correlation between time management skills and academic success"
+              >
+                <TimeManagementChart data={filteredTimeManagementData} metric="avgGWA" />
+              </ChartContainer>
+              <ChartContainer
+                title="Student Distribution by Time Management Level"
+                description="How students rate their own time management abilities"
+              >
+                <TimeManagementChart data={filteredTimeManagementData} metric="count" />
+              </ChartContainer>
             </div>
+          </SectionWrapper>
+
+          {/* Performance Factors */}
+          <SectionWrapper
+            id="factors"
+            title="Factors Affecting Academic Performance"
+            description="Student-reported challenges and barriers to academic success"
+            className="transition-all duration-500"
+          >
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ChartContainer
+                title="Top Factors (Count)"
+                description="Most frequently reported challenges"
+              >
+                <PerformanceFactorsBarChart 
+                  data={filteredPerformanceFactorsData} 
+                  topN={8}
+                  showPercentage={false}
+                />
+              </ChartContainer>
+              <ChartContainer
+                title="Top Factors (Percentage)"
+                description="Prevalence of challenges within each group"
+              >
+                <PerformanceFactorsBarChart 
+                  data={filteredPerformanceFactorsData} 
+                  topN={8}
+                  showPercentage={true}
+                />
+              </ChartContainer>
+            </div>
+          </SectionWrapper>
+
+          {/* Qualitative Analysis */}
+          <SectionWrapper
+            id="qualitative"
+            title="Qualitative Insights"
+            description="Thematic analysis of student perspectives and experiences"
+            className="transition-all duration-500"
+          >
+            <QualitativeThemesDisplay data={qualitativeThemesData} />
           </SectionWrapper>
         </div>
       </div>

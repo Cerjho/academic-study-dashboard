@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 
 interface SectionWrapperProps {
   children: ReactNode;
-  title?: string;
+  title?: string | ReactNode;
   description?: string;
   className?: string;
   id?: string;

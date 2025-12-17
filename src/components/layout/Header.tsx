@@ -16,7 +16,7 @@ const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Insights', href: '/insights' },
   { name: 'Ethics', href: '/ethics' },
-  { name: 'References', href: '/references' },
+  { name: 'Literature', href: '/literature' },
   { name: 'About', href: '/about' },
 ];
 

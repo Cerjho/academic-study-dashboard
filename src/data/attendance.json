@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "attendance": "Always",
+      "regular": {
+        "count": 32,
+        "avgGWA": 1.75,
+        "percentage": 58.18
+      },
+      "irregular": {
+        "count": 2,
+        "avgGWA": 1.75,
+        "percentage": 11.11
+      }
+    },
+    {
+      "attendance": "Often",
+      "regular": {
+        "count": 12,
+        "avgGWA": 1.96,
+        "percentage": 21.82
+      },
+      "irregular": {
+        "count": 4,
+        "avgGWA": 2.5,
+        "percentage": 22.22
+      }
+    },
+    {
+      "attendance": "Sometimes",
+      "regular": {
+        "count": 10,
+        "avgGWA": 2.1,
+        "percentage": 18.18
+      },
+      "irregular": {
+        "count": 6,
+        "avgGWA": 2.5,
+        "percentage": 33.33
+      }
+    },
+    {
+      "attendance": "Rarely",
+      "regular": {
+        "count": 1,
+        "avgGWA": 1.75,
+        "percentage": 1.82
+      },
+      "irregular": {
+        "count": 6,
+        "avgGWA": 2.75,
+        "percentage": 33.33
+      }
+    }
+  ]
+}

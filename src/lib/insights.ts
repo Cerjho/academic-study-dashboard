@@ -4,8 +4,18 @@ import { interpretCorrelation } from './constants';
  * Insights Generation Utilities
  *
  * Functions to analyze data patterns and generate academic findings,
- * implications, and recommendations.
+ * implications, and recommendations with statistical backing.
  */
+
+/**
+ * Research Questions
+ */
+export const RESEARCH_QUESTIONS = {
+  RQ1: 'Is there a significant difference in academic performance (GWA) between Regular and Irregular students in the Computer Science program?',
+  RQ2: 'What is the relationship between study hours per day and academic achievement (GWA)?',
+  RQ3: 'How do attendance patterns, time management skills, and other factors differ between Regular and Irregular students?',
+  RQ4: 'What are the primary challenges and factors affecting academic performance as reported by students in each enrollment category?',
+} as const;
 
 /**
  * Calculate performance gap between Regular and Irregular students
@@ -71,83 +81,48 @@ export function generateEnrollmentFinding(
 }
 
 /**
- * Generate GWA performance finding
+ * Generate GWA performance finding with statistical backing
  */
 export function generateGWAFinding(
   regularMean: number,
   irregularMean: number,
   regularMedian: number,
-  irregularMedian: number
+  irregularMedian: number,
+  tStatistic?: number,
+  pValue?: number,
+  cohensD?: number
 ): string {
   const gap = calculatePerformanceGap(regularMean, irregularMean);
   const gapValue = Math.abs(gap.gap).toFixed(2);
   const percentDiff = Math.abs(gap.percentage).toFixed(1);
 
-  return `Regular students demonstrate notably better academic performance with a mean GWA of ${regularMean} (median: ${regularMedian}) compared to Irregular students with a mean GWA of ${irregularMean} (median: ${irregularMedian}). The performance gap of ${gapValue} GWA points (${percentDiff}% difference) is ${gap.magnitude} in magnitude, suggesting that enrollment status has a substantial impact on academic achievement.`;
+  let statSummary = '';
+  if (tStatistic && pValue !== undefined && cohensD) {
+    const significance = pValue < 0.001 ? 'highly significant' : pValue < 0.01 ? 'very significant' : 'significant';
+    const effectSize = interpretEffectSize(cohensD);
+    statSummary = ` This difference is ${significance} (t = ${tStatistic.toFixed(3)}, p < ${pValue < 0.001 ? '0.001' : pValue.toFixed(3)}) with a ${effectSize} effect size (Cohen's d = ${cohensD.toFixed(2)}), demonstrating a substantial performance gap.`;
+  }
+
+  return `${RESEARCH_QUESTIONS.RQ1}\n\nRegular students (Mean GWA = ${regularMean.toFixed(2)}, Median = ${regularMedian.toFixed(2)}) demonstrate ${percentDiff}% better academic performance compared to irregular students (Mean GWA = ${irregularMean.toFixed(2)}, Median = ${irregularMedian.toFixed(2)}), representing a ${gapValue}-point difference in the Philippine GWA system.${statSummary}`;
 }
 
 /**
- * Generate study habits finding
+ * Generate insights for study habits and GWA correlation with statistical significance
  */
 export function generateStudyHabitsFinding(
-  correlationCoefficient: number
+  correlationCoefficient: number,
+  pValue?: number,
+  sampleSize?: number
 ): string {
   const corr = interpretCorrelationStrength(correlationCoefficient);
   
-  return `A ${corr.strength} ${corr.direction} correlation (r = ${correlationCoefficient.toFixed(2)}) exists between study hours per week and GWA. ${corr.interpretation} This counterintuitive finding suggests that students with lower GWA may be investing more time in studying to compensate for academic challenges, while higher-performing students demonstrate more efficient study habits.`;
-}
-
-/**
- * Generate implication about academic support
- */
-export function generateAcademicSupportImplication(
-  performanceGap: number
-): string {
-  const gapSize = Math.abs(performanceGap);
-  
-  if (gapSize > 0.4) {
-    return `The substantial performance gap (${gapSize.toFixed(2)} GWA points) between Regular and Irregular students indicates a critical need for targeted academic support interventions. Irregular students may face unique challenges including adjusted schedules, delayed subject sequences, and limited peer study opportunities that require institutional attention.`;
-  } else if (gapSize > 0.2) {
-    return `The moderate performance gap (${gapSize.toFixed(2)} GWA points) suggests that enrollment status affects academic outcomes. While not extreme, this difference warrants consideration of support mechanisms to help Irregular students succeed academically.`;
-  } else {
-    return `The minimal performance gap (${gapSize.toFixed(2)} GWA points) indicates that both Regular and Irregular students achieve similar academic outcomes, suggesting effective institutional support systems are in place.`;
+  let statSummary = '';
+  if (pValue !== undefined && sampleSize) {
+    const significance = pValue < 0.001 ? 'highly significant' : pValue < 0.01 ? 'very significant' : 'significant';
+    statSummary = ` This correlation is ${significance} (p < ${pValue < 0.001 ? '0.001' : pValue.toFixed(3)}, n = ${sampleSize}), indicating a reliable relationship in the population.`;
   }
-}
-
-/**
- * Generate implication about study efficiency
- */
-export function generateStudyEfficiencyImplication(): string {
-  return `The negative correlation between study hours and GWA raises important questions about study quality versus quantity. This finding implies that simply increasing study time may not improve academic performance; instead, students may benefit more from developing effective study strategies, time management skills, and seeking help when needed rather than extended study sessions.`;
-}
-
-/**
- * Generate recommendation for irregular students
- * Note: Recommendations are evidence-based extrapolations from study findings
- */
-export function generateIrregularSupportRecommendation(): string {
-  return `Implement a comprehensive support program specifically designed for Irregular students, including flexible consultation hours, peer mentoring from successful Irregular students, and academic advising that addresses the unique challenges of non-standard progression paths. Consider creating study groups that accommodate varied schedules.`;
-}
-
-/**
- * Generate recommendation for study skills training
- */
-export function generateStudySkillsRecommendation(): string {
-  return `Establish mandatory study skills workshops focusing on effective learning strategies, time management, and metacognitive techniques. The negative correlation between study hours and performance suggests many students lack efficient study methods. Programs should emphasize quality over quantity in study approaches.`;
-}
-
-/**
- * Generate recommendation for early intervention
- */
-export function generateEarlyInterventionRecommendation(): string {
-  return `Deploy an early warning system to identify struggling students (GWA > 2.0) within the first few weeks of each semester. Provide immediate academic counseling, tutoring services, and study strategy consultations. Early identification and intervention can prevent students from falling into patterns of extended study hours with diminishing returns.`;
-}
-
-/**
- * Generate recommendation for curriculum review
- */
-export function generateCurriculumRecommendation(): string {
-  return `Conduct a comprehensive review of curriculum sequencing and course load distribution, particularly for pathways that lead to Irregular status. Consider implementing bridge courses or summer intensives that allow Irregular students to realign with Regular tracks, reducing the academic performance gap observed in this study.`;
+  
+  return `${RESEARCH_QUESTIONS.RQ2}\n\nA ${corr.strength} ${corr.direction} correlation (r = ${correlationCoefficient.toFixed(3)}) exists between study hours per day and GWA. ${corr.interpretation}${statSummary}`;
 }
 
 /**
@@ -155,11 +130,46 @@ export function generateCurriculumRecommendation(): string {
  */
 export function formatStatisticalSummary(
   mean: number,
-  median: number,
-  stdDev: number,
-  mode: number
+  sd: number,
+  n: number
 ): string {
-  return `M = ${mean}, Mdn = ${median}, SD = ${stdDev}, Mode = ${mode}`;
+  return `M = ${mean.toFixed(2)}, SD = ${sd.toFixed(2)}, n = ${n}`;
+}
+
+/**
+ * Generate confidence interval description
+ */
+export function formatConfidenceInterval(
+  lower: number,
+  upper: number,
+  confidenceLevel: number = 95
+): string {
+  return `${confidenceLevel}% CI [${lower.toFixed(2)}, ${upper.toFixed(2)}]`;
+}
+
+/**
+ * Interpret effect size (Cohen's d)
+ */
+export function interpretEffectSize(d: number): string {
+  const abs = Math.abs(d);
+  if (abs < 0.2) return 'negligible';
+  if (abs < 0.5) return 'small';
+  if (abs < 0.8) return 'medium';
+  return 'large';
+}
+
+/**
+ * Generate research hypothesis result
+ */
+export function generateHypothesisResult(
+  pValue: number,
+  alpha: number = 0.05,
+  hypothesisStatement: string
+): string {
+  if (pValue < alpha) {
+    return `The null hypothesis is rejected (p ${pValue < 0.001 ? '< 0.001' : `= ${pValue.toFixed(3)}`}). ${hypothesisStatement}`;
+  }
+  return `The null hypothesis is not rejected (p = ${pValue.toFixed(3)}). Insufficient evidence to support ${hypothesisStatement.toLowerCase()}`;
 }
 
 /**

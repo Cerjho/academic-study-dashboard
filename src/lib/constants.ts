@@ -10,8 +10,8 @@
  */
 export const GWA_SCALE = {
   EXCELLENT: { min: 1.0, max: 1.5, label: 'Excellent' },
-  VERY_GOOD: { min: 1.51, max: 2.0, label: 'Very Good' },
-  GOOD: { min: 2.01, max: 2.5, label: 'Good' },
+  ABOVE_AVERAGE: { min: 1.51, max: 2.0, label: 'Above Average' },
+  SATISFACTORY: { min: 2.01, max: 2.5, label: 'Satisfactory' },
   FAIR: { min: 2.51, max: 3.0, label: 'Fair' },
   PASSING: { min: 3.01, max: 3.5, label: 'Passing' },
   FAILING: { min: 3.51, max: 5.0, label: 'Failing' },

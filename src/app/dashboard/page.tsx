@@ -3,6 +3,12 @@ import {
   getRespondentData,
   getGWADistribution,
   getStudyHabitsData,
+  getDemographicsData,
+  getAttendanceData,
+  getTimeManagementData,
+  getPerformanceFactorsData,
+  getStatisticalTestsData,
+  getQualitativeThemesData,
 } from '@/data';
 import { DashboardContent } from './DashboardContent';
 
@@ -24,12 +30,24 @@ export default function DashboardPage() {
   const respondentData = getRespondentData();
   const gwaData = getGWADistribution();
   const studyHabitsData = getStudyHabitsData();
+  const demographicsData = getDemographicsData();
+  const attendanceData = getAttendanceData();
+  const timeManagementData = getTimeManagementData();
+  const performanceFactorsData = getPerformanceFactorsData();
+  const statisticalTestsData = getStatisticalTestsData();
+  const qualitativeThemesData = getQualitativeThemesData();
 
   return (
     <DashboardContent
       respondentData={respondentData}
       gwaData={gwaData}
       studyHabitsData={studyHabitsData}
+      demographicsData={demographicsData}
+      attendanceData={attendanceData}
+      timeManagementData={timeManagementData}
+      performanceFactorsData={performanceFactorsData}
+      statisticalTestsData={statisticalTestsData}
+      qualitativeThemesData={qualitativeThemesData}
     />
   );
 }

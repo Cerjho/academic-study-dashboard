@@ -9,3 +9,5 @@ export { Badge } from './Badge';
 export { Button } from './Button';
 export { SectionWrapper } from './SectionWrapper';
 export { DrillDownModal, DrillDownSection, DrillDownStat } from './DrillDownModal';
+export { GWAScaleTooltip } from './GWAScaleTooltip';
+export { SignificanceMarker, SignificanceLegend } from './SignificanceMarker';

@@ -7,36 +7,36 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8)](https://tailwindcss.com/)
 [![Recharts](https://img.shields.io/badge/Recharts-2.15-8884d8)](https://recharts.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 ## ⚠️ Important Note
 
-**This dashboard provides interactive visualization and extended academic framework for research findings. Core data and findings are from the primary research paper. Additional references, theoretical frameworks, and methodology details represent supplementary context for dashboard presentation.**
+**This dashboard provides interactive visualization for research findings. Core data and findings are from the primary research paper.**
+
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Research Context](#research-context)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Data Model](#data-model)
-- [Development](#development)
-- [Deployment](#deployment)
-- [Performance](#performance)
-- [Accessibility](#accessibility)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Research Context](#-research-context)
+- [Features](#-features)
+- [Tech Stack](#%EF%B8%8F-tech-stack)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [Data Model](#-data-model)
+- [Development](#-development)
+- [Deployment](#-deployment)
+- [Performance](#-performance)
+- [Accessibility](#-accessibility)
+- [License](#-license)
 
 ## 🎯 Overview
 
 This project presents a comprehensive academic research dashboard analyzing enrollment status (Regular vs. Irregular) and its impact on academic achievement. Built with Next.js and TypeScript, the dashboard provides interactive data visualizations, statistical analysis, and research insights based on a study of 73 Computer Science students at Mabini College during the 2024-2025 academic year.
 
-**Note:** IRB protocol details and extended methodology represent supplementary framework for dashboard presentation.
-
 ### Key Findings
 
 - **55 Regular students** (75.3%) vs **18 Irregular students** (24.7%)
-- **Strong negative correlation** (r = -0.68) between study hours and GWA
-- **Performance gap** between enrollment groups (Regular mean: 1.95 vs Irregular mean: 2.55)
+- **Moderate negative correlation** (r = -0.494, p < 0.001) between study hours and GWA
+- **Significant performance gap** between enrollment groups (Regular mean: 1.86 vs Irregular mean: 2.50)
+  - Independent samples t-test: t(71) = -5.872, p < 0.001, Cohen's d = 1.59
 - **Study hours and academic patterns** differ notably by enrollment status
 
 ## 🔬 Research Context
@@ -52,20 +52,37 @@ This project presents a comprehensive academic research dashboard analyzing enro
 
 ### Statistical Methods
 
-- Descriptive statistics (mean, SD, frequency distributions)
-- Comparative analysis of enrollment status vs. GWA
-- Pearson correlation (r = -0.68) between study hours and GWA
-- Frequency distributions and percentage calculations
-- Note: Advanced statistical tests represent analytical framework for dashboard
+- Descriptive statistics (mean, median, SD, mode, frequency distributions)
+- Independent samples t-test for GWA comparison (t = -5.872, p < 0.001, d = 1.59)
+- Pearson correlation coefficient (r = -0.494, p < 0.001) between study hours and GWA
+- Effect size analysis (Cohen's d) and 95% confidence intervals
+- Thematic analysis of qualitative responses
+- Chi-square tests for categorical distributions
 
 ## ✨ Features
 
 ### 📊 Interactive Visualizations
 
+**Core Visualizations:**
+
 - **Enrollment Distribution Pie Chart** - Visual breakdown of Regular vs. Irregular students
-- **GWA Comparison Bar Chart** - Academic performance across GWA categories
-- **Study Hours Line Chart** - Daily study hours vs GWA analysis
-- **Interactive Filtering** - Toggle enrollment status and explore data patterns
+- **GWA Comparison Bar Chart** - Academic performance across GWA categories with significance markers
+- **Study Hours Line Chart** - Daily study hours vs GWA analysis with correlation display
+
+**Extended Analysis:**
+
+- **Year Level Distribution** - Student breakdown across academic years
+- **Attendance Patterns Chart** - Attendance frequency vs GWA correlation
+- **Time Management Analysis** - Self-reported skills vs academic performance
+- **Performance Factors Chart** - Top challenges affecting student success
+- **Statistical Tests Table** - Complete inferential statistics with p-values, effect sizes
+- **Qualitative Themes Display** - Thematic analysis with student quotes and belief distribution
+
+**Interactive Features:**
+
+- Dynamic filtering by enrollment status and GWA ranges
+- Drill-down modals for detailed breakdowns
+- Statistical significance indicators throughout
 
 ### 📈 Dashboard Components
 
@@ -76,9 +93,9 @@ This project presents a comprehensive academic research dashboard analyzing enro
 
 ### 📝 Academic Content
 
-- **Methodology Page** - Research design, sampling, data collection procedures
+- ~~Methodology Page~~ - Removed; dashboard focuses on data analysis, not formal research methods
 - **Ethics Page** - IRB compliance, informed consent, data privacy protocols
-- **References Page** - 47 APA-formatted citations across 9 academic areas
+- **Literature Page** - Review of related literature and studies with citations
 - **About Page** - Research team profiles and institutional background
 
 ### 🎨 Design System
@@ -130,19 +147,19 @@ git clone https://github.com/yourusername/academic-study-dashboard.git
 cd academic-study-dashboard
 ```
 
-2. **Install dependencies**
+1. **Install dependencies**
 
 ```bash
 npm install
 ```
 
-3. **Run development server**
+1. **Run development server**
 
 ```bash
 npm run dev
 ```
 
-4. **Open in browser**
+1. **Open in browser**
 Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Available Scripts
@@ -157,7 +174,7 @@ npm run type-check   # Run TypeScript compiler check
 
 ## 📁 Project Structure
 
-```
+```text
 academic-study-dashboard/
 ├── src/
 │   ├── app/                      # Next.js App Router pages
@@ -165,9 +182,9 @@ academic-study-dashboard/
 │   │   ├── page.tsx              # Landing page
 │   │   ├── dashboard/            # Main dashboard page
 │   │   ├── insights/             # Insights and findings page
-│   │   ├── methodology/          # Research methodology page
+│   │   ├── methodology/          # (Removed) formerly research methodology page
 │   │   ├── ethics/               # Ethics and compliance page
-│   │   ├── references/           # Academic references page
+│   │   ├── literature/           # Literature review page
 │   │   └── about/                # About page
 │   ├── components/
 │   │   ├── charts/               # Recharts visualization components
@@ -290,7 +307,7 @@ git commit -m "Initial commit"
 git push origin main
 ```
 
-2. **Deploy to Vercel**
+1. **Deploy to Vercel**
    - Visit [vercel.com](https://vercel.com)
    - Click "Import Project"
    - Select your repository
@@ -319,13 +336,13 @@ const nextConfig = {
 };
 ```
 
-2. Build:
+1. Build:
 
 ```bash
 npm run build
 ```
 
-3. Deploy `out/` directory to static host
+1. Deploy `out/` directory to static host
 
 ## ⚡ Performance
 
@@ -404,4 +421,4 @@ Special thanks to:
 
 ---
 
-**Built with ❤️ for academic research | Mabini College | 2024-2025**
+Built with ❤️ for academic research | Mabini College | 2024-2025

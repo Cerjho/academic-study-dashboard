@@ -11,7 +11,7 @@ import { GWA_SCALE } from '@/lib/constants';
  * Allows users to filter data by academic performance categories.
  */
 
-type GWARange = 'excellent' | 'veryGood' | 'good' | 'fair';
+type GWARange = 'excellent' | 'aboveAverage' | 'satisfactory' | 'fair';
 
 interface GWARangeSliderProps {
   value?: GWARange[];
@@ -27,14 +27,14 @@ const rangeOptions: { value: GWARange; label: string; range: string; color: stri
     color: 'green',
   },
   {
-    value: 'veryGood',
-    label: GWA_SCALE.VERY_GOOD.label,
+    value: 'aboveAverage',
+    label: GWA_SCALE.ABOVE_AVERAGE.label,
     range: '1.51-2.00',
     color: 'blue',
   },
   {
-    value: 'good',
-    label: GWA_SCALE.GOOD.label,
+    value: 'satisfactory',
+    label: GWA_SCALE.SATISFACTORY.label,
     range: '2.01-2.50',
     color: 'yellow',
   },
@@ -47,7 +47,7 @@ const rangeOptions: { value: GWARange; label: string; range: string; color: stri
 ];
 
 export function GWARangeSlider({
-  value = ['excellent', 'veryGood', 'good', 'fair'],
+  value = ['excellent', 'aboveAverage', 'satisfactory', 'fair'],
   onChange,
   className,
 }: GWARangeSliderProps) {

@@ -82,9 +82,10 @@ This directory contains the static JSON data files for the academic study dashbo
 
 **Key Findings**:
 
-- Regular students: Mean GWA = 1.85 (Very Good)
-- Irregular students: Mean GWA = 2.15 (Good)
-- Difference: 0.30 GWA points in favor of regular students
+- Regular students: Mean GWA = 1.86 (Very Good)
+- Irregular students: Mean GWA = 2.50 (Satisfactory)
+- Difference: 0.64 GWA points in favor of regular students
+- Statistical significance: t(71) = -5.872, p < 0.001, Cohen's d = 1.59
 
 ---
 
@@ -104,17 +105,154 @@ This directory contains the static JSON data files for the academic study dashbo
     - `avgGWA`: Average GWA
 
 - `correlationCoefficient`: Pearson correlation (-1 to 1)
-  - **-0.68**: Strong negative correlation (actual study value)
-  - Interpretation: More study hours = Lower GWA (better performance)
+  - **-0.494**: Moderate negative correlation (r = -0.494, p < 0.001)
+  - Interpretation: More study hours = Lower GWA (better performance in Philippine system)
 
 **Pattern Observed**:
 
-| Hours/Week | Regular Avg GWA | Irregular Avg GWA |
+| Hours/Day | Regular Avg GWA | Irregular Avg GWA |
 |-----------|-----------------|-------------------|
-| 0-5       | 2.45 (Good)     | 2.70 (Fair)       |
-| 6-10      | 2.05 (Good)     | 2.30 (Good)       |
-| 11-15     | 1.75 (Very Good)| 1.95 (Very Good)  |
-| 16+       | 1.55 (Excellent)| 1.70 (Very Good)  |
+| <1 hour   | 1.85 (Very Good)| 2.58 (Satisfactory)|
+| 1-2 hours | 2.20 (Good)     | 2.56 (Satisfactory)|
+| 3-4 hours | 2.17 (Good)     | 2.50 (Satisfactory)|
+| >4 hours  | 1.49 (Excellent)| 1.75 (Very Good)  |
+
+---
+
+### 4. `demographics.json`
+
+**Purpose**: Year level distribution across enrollment status
+
+**Structure**:
+
+- `yearLevel`: Array of year level distributions
+  - `year`: Academic year (1st-4th Year)
+  - `regular`: Count,
+  getDemographicsData,
+  getAttendanceData,
+  getTimeManagementData,
+  getPerformanceFactorsData,
+  getStatisticalTestsData,
+  getQualitativeThemesData,
+  getAllStudyData // Get all at once
+} from '@/data';
+
+// In your component
+const respondents = getRespondentData();
+const gwaData = getGWADistribution();
+const studyData = getStudyHabitsData();
+const statsData = getStatisticalTestsData();
+const qualData = getQualitativeThemesData();
+```
+
+### Type Safety
+
+All data structures have corresponding TypeScript interfaces in `@/types`:
+
+**Core Data Types:**
+- `RespondentData`
+- `GWADistributionData`
+- `StudyHabitsData`
+
+**Extended Data Types:**
+- `DemographicsData`
+- `AttendanceData`
+- `TimeManagementData`
+- 73 survey responses from Computer Science students
+- Survey via Google Forms (November 2024)
+- Compliant with Data Privacy Act of 2012 (RA 10173)
+- Email addresses collected for verification only, not linked to analysis
+- All identifiable information anonymized in dashboar
+  - `attendance`: Frequency level (Always, Often, Sometimes, Rarely, Never)
+  - `regular`: Regular students data
+    - `count`: Number of students
+    - `avgGWA`: Average GWA (null if no students)
+    - `percentage`: Percentage within regular group
+  - `irregular`: Irregular students data (same structure)
+
+---
+
+### 6. `timeManagement.json`
+
+**Purpose**: Self-reported time management skills vs academic performance
+
+**Structure**:
+
+- `categories`: Array of skill levels
+  - `level`: Skill level (Excellent, Good, Fair, Poor)
+  - `regular`: Regular students data
+    - `count`: Number of students
+    - `avgGWA`: Average GWA
+    - `percentage`: Percentage within group
+  - `irregular`: Irregular students data (same structure)
+
+---
+
+### 7. `performanceFactors.json`
+
+**Purpose**: Multi-select factors affecting academic performance
+
+**Structure**:
+
+- `factors`: Array of contributing factors
+  - `factor`: Description of challenge/barrier
+  - `regular`: Count from regular students
+  - `irregular`: Count from irregular students
+  - `total`: Combined count
+  - `regularPercentage`: Percentage of regular students reporting this
+  - `irregularPercentage`: Percentage of irregular students reporting this
+
+**Top Factors**: Heavy class load, Difficulty understanding lessons, Lack of study time, Motivation level, Personal/family concerns
+
+---
+
+### 8. `statisticalTests.json`
+
+**Purpose**: Inferential statistics and hypothesis testing results
+
+**Structure**:
+
+- `gwaComparison`: Independent samples t-test results
+  - `tStatistic`: t-value (-5.872)
+  - `df`: Degrees of freedom (71)
+  - `pValue`: Statistical significance (<0.0001)
+  - `significant`: Boolean flag
+  - `cohensD`: Effect size (1.59 - large)
+  - `interpretation`: Plain language explanation
+  - `confidenceInterval95`: Lower and upper bounds
+  - `regularGroup`: Descriptive stats (n, mean, SD)
+  - `irregularGroup`: Descriptive stats
+
+- `correlations`: Pearson correlation analyses
+  - `studyHoursVsGWA`: 
+    - `r`: Correlation coefficient (-0.494)
+    - `pValue`: Significance level (<0.001)
+    - `interpretation`: Contextual explanation
+    - `n`: Sample size
+
+- `note`: Explanation of Philippine GWA system
+
+---
+
+### 9. `qualitativeThemes.json`
+
+**Purpose**: Thematic analysis of open-ended student responses
+
+**Structure**:
+
+- `themes`: Array of identified themes
+  - `theme`: Theme name
+  - `description`: Detailed explanation
+  - `frequency`: Number of relevant responses
+  - `enrollmentStatus`: Which group(s) this applies to
+  - `representativeQuotes`: Array of 2-3 example quotes
+
+- `beliefDistribution`: Student beliefs about enrollment impact
+  - `yes`: Counts by enrollment status
+  - `maybe`: Counts by enrollment status
+  - `no`: Counts by enrollment status
+
+**Key Themes**: Structured Learning Environment, Catch-up Challenges, Time Management Concerns
 
 ---
 
@@ -157,15 +295,50 @@ All data structures have corresponding TypeScript interfaces in `@/types`:
 
 **Data Source**:
 
-- Anonymized student records from Mabini College
-- IRB-approved research study
-- Data collection period: November 2024
-- No personally identifiable information (PII) included
+- Anonymize & Data Dictionary
+
+### Key Terms
+
+1. **GWA (General Weighted Average)**: Philippine grading system where 1.0 = highest, 5.0 = failing
+2. **Regular Student**: Following standard curriculum sequence on schedule
+3. **Irregular Student**: Deviating from standard sequence (failed/dropped courses, LOA, etc.)
+4. **Sample Size**: n=73 (55 Regular, 18 Irregular)
+5. **Academic Year**: 2024-2025 (single semester snapshot)
+6. **Study Hours**: Reported as daily study time outside of class
+
+### Statistical Notes
+
+- **Significance Level**: α = 0.05 (95% confidence)
+- **Effect Size Interpretation**: Cohen's d > 0.8 = large effect
+- **Correlation**: r = -0.494 (moderate negative, statistically significant)
+- **Missing Data**: Year level not explicitly collected; estimated distribution used
+
+### Limitations
+
+- Self-reported data may contain response bias
+- Cross-sectional design limits causal inference
+- Single institution limits 7, 2025
 
 ---
 
-## 🎨 Color Palette
+## 🔬 Data Processing
 
+All processed data files were generated from `realRespondents.json` using:
+
+```bash
+npx tsx scripts/extract-comprehensive-data.ts
+```
+
+This script:
+- Normalizes enrollment status ("Reular" → "Regular")
+- Converts GWA ranges to numeric midpoints
+- Calculates statistical tests (t-tests, correlations)
+- Performs thematic coding of qualitative responses
+- Generates distribution summaries
+
+See [scripts/extract-comprehensive-data.ts](../../scripts/extract-comprehensive-data.ts) for full implementation.izability
+- Small irregular student sample (n=18) limits subgroup analysis
+- Year level data estimated, not measured
 Consistent color coding across all visualizations (per research paper specification):
 
 - **Regular Students**: `#3B82F6` (Blue-500) - Blue per paper

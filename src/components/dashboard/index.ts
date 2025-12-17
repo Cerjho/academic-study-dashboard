@@ -15,3 +15,4 @@ export {
   type LegendItem,
 } from './InteractiveLegend';
 export { InsightCard, InsightPanel } from './InsightCard';
+export { YearLevelFilter } from './YearLevelFilter';

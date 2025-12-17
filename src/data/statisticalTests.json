@@ -1,0 +1,38 @@
+{
+  "gwaComparison": {
+    "description": "Independent samples t-test comparing GWA between Regular and Irregular students",
+    "tStatistic": -5.872,
+    "df": 71,
+    "pValue": 0.0001,
+    "significant": true,
+    "cohensD": 1.59,
+    "interpretation": "Large effect size",
+    "mean1": 1.86,
+    "mean2": 2.5,
+    "confidenceInterval95": {
+      "lower": -0.85,
+      "upper": -0.43
+    },
+    "regularGroup": {
+      "n": 55,
+      "mean": 1.86,
+      "sd": 0.4
+    },
+    "irregularGroup": {
+      "n": 18,
+      "mean": 2.5,
+      "sd": 0.39
+    }
+  },
+  "correlations": {
+    "studyHoursVsGWA": {
+      "description": "Pearson correlation between study hours per day and GWA",
+      "r": -0.494,
+      "pValue": 0.001,
+      "significant": true,
+      "interpretation": "Significant moderate negative correlation (more hours = better grades since lower GWA is better)",
+      "n": 73
+    }
+  },
+  "note": "In the Philippine GWA system, lower values indicate better performance (1.0 = highest, 5.0 = failing)"
+}
