@@ -86,10 +86,10 @@ export function interpretCorrelation(coefficient: number): string {
 export function getGWALabel(gwa: number): string {
   if (gwa >= GWA_SCALE.EXCELLENT.min && gwa <= GWA_SCALE.EXCELLENT.max)
     return GWA_SCALE.EXCELLENT.label;
-  if (gwa >= GWA_SCALE.VERY_GOOD.min && gwa <= GWA_SCALE.VERY_GOOD.max)
-    return GWA_SCALE.VERY_GOOD.label;
-  if (gwa >= GWA_SCALE.GOOD.min && gwa <= GWA_SCALE.GOOD.max)
-    return GWA_SCALE.GOOD.label;
+  if (gwa >= GWA_SCALE.ABOVE_AVERAGE.min && gwa <= GWA_SCALE.ABOVE_AVERAGE.max)
+    return GWA_SCALE.ABOVE_AVERAGE.label;
+  if (gwa >= GWA_SCALE.SATISFACTORY.min && gwa <= GWA_SCALE.SATISFACTORY.max)
+    return GWA_SCALE.SATISFACTORY.label;
   if (gwa >= GWA_SCALE.FAIR.min && gwa <= GWA_SCALE.FAIR.max)
     return GWA_SCALE.FAIR.label;
   if (gwa >= GWA_SCALE.PASSING.min && gwa <= GWA_SCALE.PASSING.max)
