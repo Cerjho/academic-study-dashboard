@@ -41,13 +41,21 @@ export function FilterProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   
-  // Initialize filters from URL
-  const initialFilters: FilterState = {
-    enrollmentStatus: (searchParams.get('status') as EnrollmentStatus) || 'All',
-    gwaRanges: searchParams.get('gwa')?.split(',').filter(Boolean) || [],
-    yearLevel: (searchParams.get('year') as YearLevel) || 'All',
-    studyHoursRanges: searchParams.get('hours')?.split(',').filter(Boolean) || []
+  // Initialize filters from URL or defaults
+  const getInitialFilters = (): FilterState => {
+    try {
+      return {
+        enrollmentStatus: (searchParams?.get('status') as EnrollmentStatus) || 'All',
+        gwaRanges: searchParams?.get('gwa')?.split(',').filter(Boolean) || [],
+        yearLevel: (searchParams?.get('year') as YearLevel) || 'All',
+        studyHoursRanges: searchParams?.get('hours')?.split(',').filter(Boolean) || []
+      };
+    } catch {
+      return defaultFilters;
+    }
   };
+  
+  const initialFilters = getInitialFilters();
 
   const [filters, setFilters] = useState<FilterState>(initialFilters);
 

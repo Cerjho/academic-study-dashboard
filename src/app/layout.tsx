@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -45,23 +46,25 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="flex min-h-screen flex-col antialiased">
-        <FilterProvider>
-          {/* Skip to main content link for accessibility */}
-          <a href="#main-content" className="skip-link">
-            Skip to main content
-          </a>
+        <Suspense fallback={<div>Loading...</div>}>
+          <FilterProvider>
+            {/* Skip to main content link for accessibility */}
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
 
-          {/* Header with navigation */}
-          <Header />
+            {/* Header with navigation */}
+            <Header />
 
-          {/* Main content area */}
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
+            {/* Main content area */}
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
 
-          {/* Footer */}
-          <Footer />
-        </FilterProvider>
+            {/* Footer */}
+            <Footer />
+          </FilterProvider>
+        </Suspense>
       </body>
     </html>
   );

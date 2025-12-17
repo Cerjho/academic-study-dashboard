@@ -7,7 +7,7 @@
  */
 
 import { Card, Badge } from '@/components/ui';
-import { KPICard, InsightCard, StatusToggle, GWARangeSlider, YearLevelFilter } from '@/components/dashboard';
+import { KPICard, StatusToggle, GWARangeSlider, YearLevelFilter } from '@/components/dashboard';
 import { SectionWrapper } from '@/components/ui';
 // Chart imports removed - using custom visualizations
 import { useFilters } from '@/contexts/FilterContext';
@@ -18,11 +18,6 @@ import {
   useStatisticalTests,
   useMetricStats
 } from '@/hooks/useRespondentData';
-import {
-  generateEnrollmentFinding,
-  generateGWAFinding,
-  generateStudyHabitsFinding,
-} from '@/lib/insights';
 
 export function DashboardContent() {
   const { filters, setEnrollmentStatus, setGWARanges, setYearLevel, clearFilters, applyPreset } = useFilters();
@@ -31,30 +26,6 @@ export function DashboardContent() {
   const gwaDistribution = useGWADistribution();
   const statisticalTests = useStatisticalTests();
   const gwaStats = useMetricStats('gwa');
-
-  // Generate insights from current data
-  const enrollmentFinding = generateEnrollmentFinding(
-    counts.regular,
-    counts.irregular,
-    counts.total
-  );
-
-  const gwaFinding = generateGWAFinding(
-    gwaDistribution.byStatus.Regular?.stats.mean || 0,
-    gwaDistribution.byStatus.Irregular?.stats.mean || 0,
-    gwaDistribution.byStatus.Regular?.stats.median || 0,
-    gwaDistribution.byStatus.Irregular?.stats.median || 0,
-    statisticalTests?.gwaComparison?.tStatistic,
-    statisticalTests?.gwaComparison?.pValue,
-    statisticalTests?.gwaComparison?.cohensD
-  );
-
-  // Calculate study insights if available
-  const studyFinding = processedData.studyHours ? generateStudyHabitsFinding(
-    processedData.studyHours.correlation,
-    processedData.studyHours.regular.averageHours,
-    processedData.studyHours.irregular.averageHours
-  ) : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-regular-50">

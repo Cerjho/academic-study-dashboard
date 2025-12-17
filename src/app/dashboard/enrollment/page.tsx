@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui';
 import { KPICard, StatusToggle } from '@/components/dashboard';
 import { SectionWrapper } from '@/components/ui';
 import { useFilters } from '@/contexts/FilterContext';
-import { useRespondentCounts, useEnrollmentDistribution } from '@/hooks/useRespondentData';
+import { useRespondentCounts } from '@/hooks/useRespondentData';
 
 export default function EnrollmentPage() {
   const { filters, setEnrollmentStatus } = useFilters();
