@@ -186,7 +186,7 @@ export default function AboutPage() {
                   <dt className="mb-1 text-sm font-medium text-gray-700">
                     Sample Size
                   </dt>
-                  <dd className="text-sm text-gray-900">73 students</dd>
+                  <dd className="text-sm text-gray-900">72 students</dd>
                 </div>
                 <div>
                   <dt className="mb-1 text-sm font-medium text-gray-700">
@@ -230,6 +230,61 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* References */}
+          <section className="mb-10">
+            <div className="mb-6 flex items-center gap-3">
+              <svg className="h-7 w-7 text-regular-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <h2 className="text-3xl font-bold text-gray-800">
+                References
+              </h2>
+            </div>
+            <div className="prose prose-gray max-w-none rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 p-6 border border-blue-200 shadow-sm">
+              <p className="mb-4 text-xs text-gray-600 font-semibold uppercase tracking-wide">
+                APA 7th Format
+              </p>
+              <ol className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                <li>
+                  Khanal, S. P. (2019). Irregular attendance of university students at class and its relation to their academic achievement. <em>Tribhuvan University Journal, 33</em>(1), 115–128.{' '}
+                  <a href="https://doi.org/10.3126/tuj.v33i1.28687" target="_blank" rel="noopener noreferrer" className="text-regular-600 hover:text-regular-700 underline break-all">
+                    https://doi.org/10.3126/tuj.v33i1.28687
+                  </a>
+                </li>
+                <li>
+                  Author(s). (Year). Lived experiences of irregular students in private higher education institution.{' '}
+                  <a href="https://www.researchgate.net/publication/391596298" target="_blank" rel="noopener noreferrer" className="text-regular-600 hover:text-regular-700 underline break-all">
+                    https://www.researchgate.net/publication/391596298
+                  </a>
+                </li>
+                <li>
+                  Author(s). (Year). Challenges faced by irregular students and their academic performance. <em>International Journal of Research Publication and Reviews</em>.{' '}
+                  <a href="https://ijrpr.com/uploads/V6ISSUE4/IJRPR43482.pdf" target="_blank" rel="noopener noreferrer" className="text-regular-600 hover:text-regular-700 underline break-all">
+                    https://ijrpr.com/uploads/V6ISSUE4/IJRPR43482.pdf
+                  </a>
+                </li>
+                <li>
+                  Author(s). (Year). Investigating the relationship between school attendance and academic performance in universal primary education: The case of Uganda.{' '}
+                  <a href="https://files.eric.ed.gov/fulltext/EJ1252243.pdf" target="_blank" rel="noopener noreferrer" className="text-regular-600 hover:text-regular-700 underline break-all">
+                    https://files.eric.ed.gov/fulltext/EJ1252243.pdf
+                  </a>
+                </li>
+                <li>
+                  Case study on the irregularity of students in school. (n.d.). <em>ResearchGate</em>.{' '}
+                  <a href="https://www.researchgate.net/publication/359888884_case_study_on_the_irregularity_of_student_in_school" target="_blank" rel="noopener noreferrer" className="text-regular-600 hover:text-regular-700 underline break-all">
+                    https://www.researchgate.net/publication/359888884_case_study_on_the_irregularity_of_student_in_school
+                  </a>
+                </li>
+                <li>
+                  Irregular students: Their academic and employment struggles. (n.d.). <em>Global Scientific Journal</em>.{' '}
+                  <a href="https://www.globalscientificjournal.com/researchpaper/IRREGULAR_STUDENTS_THEIR_ACADEMIC_AND_EMPLOYMENT_STRUGGLES.pdf" target="_blank" rel="noopener noreferrer" className="text-regular-600 hover:text-regular-700 underline break-all">
+                    https://www.globalscientificjournal.com/researchpaper/IRREGULAR_STUDENTS_THEIR_ACADEMIC_AND_EMPLOYMENT_STRUGGLES.pdf
+                  </a>
+                </li>
+              </ol>
+            </div>
+          </section>
+
           {/* Acknowledgments */}
           <section>
             <div className="mb-6 flex items-center gap-3">
@@ -246,7 +301,7 @@ export default function AboutPage() {
               </p>
               <ul className="mt-4 space-y-3">
                 <li>
-                  <strong>Participating Students:</strong> All 73 Computer
+                  <strong>Participating Students:</strong> All 72 Computer
                   Science students who voluntarily participated in this study
                 </li>
               </ul>
